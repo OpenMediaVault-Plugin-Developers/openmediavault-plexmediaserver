@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+# This file is part of OpenMediaVault.
+#
+# @license   http://www.gnu.org/licenses/gpl.html GPL Version 3
+# @author    Volker Theile <volker.theile@openmediavault.org>
+# @copyright Copyright (c) 2009-2013 Volker Theile
+#
+# OpenMediaVault is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# OpenMediaVault is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with OpenMediaVault. If not, see <http://www.gnu.org/licenses/>.
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+case "$1" in
+	configure)
+
+		########################################################################
+		#  Update the configuration.
+		#	<config>
+		#		<services>
+		#			<plexmediaserver>
+		#				<enable>0</enable>
+		#				<db-folder></db-folder>
+		#				<mntentref></mntentref>		
+		#			</plexmediaserver>
+		#		</services>
+		#	</config>
+		########################################################################
+		
+		if omv_config_exists "/config/services/plexmediaserver"; then
+			MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
+		fi
+		
+		omv_config_delete "/config/services/plexmediaserver"
+		
+		PLEX_HOME=$(getent passwd plex | cut -d: -f6)
+		
+		echo "Initialize configuration"
+		object="<enable>0</enable>"
+		object="${object}<db-folder>${PLEX_HOME}</db-folder>"
+		object="${object}<mntentref>${MNTENTREF}</mntentref>"
+		omv_config_add_element "/config/services" "plexmediaserver" "${object}" true
+		
+	;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+
+	*)
+		echo "postinst called with unknown argument '$1'" >&2
+		exit 1
+	;;
+esac
+
+exit 0
