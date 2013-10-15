@@ -94,7 +94,9 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 fieldLabel: _("Database Folder"),
                 allowNone: true,
                 readOnly: true
-            }]
+            },{
+				html: _("<a href=\"#\" onclick=\"window.open(window.location.href+':32400')\">Open Plex Management page</a>;")
+			}]
 		}];
 	}
 });
