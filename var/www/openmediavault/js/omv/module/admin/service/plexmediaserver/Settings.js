@@ -110,7 +110,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
 		},{
 				xtype: "button",
 				name: "openmanage",
-				text: _("Open Management page"),
+				text: _("Plex Web Client"),
 				scope: this,
 				handler: function() {
 					var link = window.location.origin + ':32400/manage';
