@@ -37,6 +37,18 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
 	rpcService: "PlexMediaServer",
 	rpcGetMethod: "getSettings",
 	rpcSetMethod: "setSettings",
+	plugins: [{
+		ptype: "linkedfields",
+		correlations: [{
+			name: [
+				"openmanage"
+			],
+			conditions: [
+				{ name: "enable", value: false }
+			],
+			properties: "disabled"
+		}]
+	}],
 
 	getFormItems: function () {
 		return [{
@@ -94,9 +106,16 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 fieldLabel: _("Database Folder"),
                 allowNone: true,
                 readOnly: true
-            },{
-				html: _("<a href=\"#\" onclick=\"window.open(window.location.href+':32400')\">Open Plex Management page</a>;")
-			}]
+            }]
+		},{
+				xtype: "button",
+				name: "openmanage",
+				text: _("Open Management page"),
+				scope: this,
+				handler: function() {
+					var link = window.location.origin + ':32400/manage';
+					window.open(link, '_blank');
+				}
 		}];
 	}
 });
