@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (0.5.2) stable; urgency=low
+
+  * Change button title
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Tue, 15 Oct 2013 16:02:27 -0500
+
 openmediavault-plexmediaserver (0.5.1) stable; urgency=low
 
   * Initial release
