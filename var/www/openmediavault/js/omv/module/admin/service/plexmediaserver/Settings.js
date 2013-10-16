@@ -114,6 +114,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
 				scope: this,
 				handler: function() {
 					var link = window.location.origin + ':32400/manage';
+					link = link.replace("https:", "http:");
 					window.open(link, '_blank');
 				}
 		}];
