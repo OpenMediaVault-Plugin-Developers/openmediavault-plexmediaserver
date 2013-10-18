@@ -1,3 +1,10 @@
+openmediavault-plexmediaserver (0.5.4) stable; urgency=low
+
+  * Added web client iframe tab
+  * Added checkbox to show/hide web client tab
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 18 Oct 2013 06:48:27 -0500
+
 openmediavault-plexmediaserver (0.5.3) stable; urgency=low
 
   * Force web client to open using http

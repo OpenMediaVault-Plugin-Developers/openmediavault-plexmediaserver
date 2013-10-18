@@ -64,6 +64,7 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
 
 		// Modify the result object.
 		$object['enable'] = boolval($object['enable']);
+		$object['showtab'] = boolval($object['showtab']);
 
 		return $object;
 	}
@@ -87,7 +88,8 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
 			"properties":{
 				"enable":{"type":"boolean"},
 				"db-folder":{"type":"string","optional":true},
-				"mntentref":{' . $GLOBALS['OMV_JSONSCHEMA_UUID_NONE'] . '}
+				"mntentref":{' . $GLOBALS['OMV_JSONSCHEMA_UUID_NONE'] . '},
+				"showtab":{"type":"boolean"}
 			}
 		}');
 		
@@ -103,6 +105,7 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
             "enable" => array_boolval($params, 'enable'),
             "db-folder" => $params['db-folder'],
             "mntentref" => $params['mntentref'],
+			"showtab" => array_boolval($params, 'showtab')
         );
 
         // Set configuration object

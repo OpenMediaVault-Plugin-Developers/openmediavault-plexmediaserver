@@ -34,7 +34,8 @@ case "$1" in
 		#			<plexmediaserver>
 		#				<enable>0</enable>
 		#				<db-folder></db-folder>
-		#				<mntentref></mntentref>		
+		#				<mntentref></mntentref>	
+		#				<showtab>0</showtab>		
 		#			</plexmediaserver>
 		#		</services>
 		#	</config>
@@ -56,6 +57,7 @@ case "$1" in
 		object="<enable>${ENABLE}</enable>"
 		object="${object}<db-folder>${PLEX_HOME}</db-folder>"
 		object="${object}<mntentref>${MNTENTREF}</mntentref>"
+		object="${object}<showtab>0</showtab>"
 		omv_config_add_element "/config/services" "plexmediaserver" "${object}" true
 		
 	;;

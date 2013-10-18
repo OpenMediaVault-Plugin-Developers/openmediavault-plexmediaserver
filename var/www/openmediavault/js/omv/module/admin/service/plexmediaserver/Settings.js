@@ -50,6 +50,28 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
 		}]
 	}],
 
+	initComponent : function () {
+        var me = this;
+
+        me.on('load', function () {
+			var checked = me.findField('enable').checked;
+			var showtab = me.findField('showtab').checked;
+            var parent = me.up('tabpanel');
+
+            if (!parent)
+                return;
+
+            var webClientPanel = parent.down('panel[title=' + _("Web Client") + ']');
+
+            if (webClientPanel) {
+                checked ? webClientPanel.enable() : webClientPanel.disable();
+				showtab ? webClientPanel.tab.show() : webClientPanel.tab.hide();
+			}
+        });
+
+        me.callParent(arguments);
+    },
+	
 	getFormItems: function () {
 		return [{
 			xtype: "fieldset",
@@ -106,16 +128,25 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 fieldLabel: _("Database Folder"),
                 allowNone: true,
                 readOnly: true
-            }]
+            },{
+				xtype: "checkbox",
+				name: "showtab",
+				fieldLabel: _("Enable"),
+				checked: false,
+                plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : _("Show tab containing Web Client frame")
+                }]				
+			}]
 		},{
-				xtype: "button",
-				name: "openmanage",
-				text: _("Plex Web Client"),
-				scope: this,
-				handler: function() {
-					var link = 'http://' + location.hostname + ':32400/manage';
-					window.open(link, '_blank');
-				}
+			xtype: "button",
+			name: "openmanage",
+			text: _("Plex Web Client"),
+			scope: this,
+			handler: function() {
+				var link = 'http://' + location.hostname + ':32400/manage';
+				window.open(link, '_blank');
+			}
 		}];
 	}
 });
