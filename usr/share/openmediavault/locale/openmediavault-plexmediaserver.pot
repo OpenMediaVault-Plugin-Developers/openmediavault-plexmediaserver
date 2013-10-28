@@ -1,0 +1,52 @@
+# openmediavault-plexmediaserver
+# Copyright (C) 2013
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-plexmediaserver\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-28 09:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Database files will move to new location if database volume is changed."
+msgstr "Database files will move to new location if database volume is changed."
+
+msgid "Database Folder"
+msgstr "Database Folder"
+
+msgid "Database Volume"
+msgstr "Database Volume"
+
+msgid "Enable"
+msgstr "Enable"
+
+msgid "General settings"
+msgstr "General settings"
+
+msgid "Plex Media Server"
+msgstr "Plex Media Server"
+
+msgid "Plex Web Client"
+msgstr "Plex Web Client"
+
+msgid "Select a volume ..."
+msgstr "Select a volume ..."
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "Show tab containing Web Client frame"
+msgstr "Show tab containing Web Client frame"
+
+msgid "Web Client"
+msgstr "Web Client"
+

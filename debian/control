@@ -7,7 +7,7 @@ Standards-Version: 3.9.3
 Homepage: http://omv-extras.org/
 
 Package: openmediavault-plexmediaserver
-Architecture: i386 amd64
+Architecture: all
 Depends: ${misc:Depends}, openmediavault (>= 0.5), plexmediaserver
 Description: OpenMediaVault Plex Media Server plugin
  Stream media everywhere(tm)
