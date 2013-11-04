@@ -1,0 +1,53 @@
+# openmediavault-plexmediaserver
+# Copyright (C) 2013
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# davidh2k <davidh1990@gmx.de>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-plexmediaserver\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-28 09:13-0500\n"
+"PO-Revision-Date: 2013-10-28 19:15+0000\n"
+"Last-Translator: davidh2k <davidh1990@gmx.de>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid ""
+"Database files will move to new location if database volume is changed."
+msgstr "Datenbank Dateien werden verschoben wenn ein neuer Datenbank Datenträger ausgewählt wird."
+
+msgid "Database Folder"
+msgstr "Datenbank Verzeichnis"
+
+msgid "Database Volume"
+msgstr "Datenbank Datenträger"
+
+msgid "Enable"
+msgstr "Aktivieren"
+
+msgid "General settings"
+msgstr "Allgemeine Einstellungen"
+
+msgid "Plex Media Server"
+msgstr "Plex Media Server"
+
+msgid "Plex Web Client"
+msgstr "Plex Web Client"
+
+msgid "Select a volume ..."
+msgstr "Datenträger auswählen ..."
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Show tab containing Web Client frame"
+msgstr "Zeige Tab mit dem Web Client "
+
+msgid "Web Client"
+msgstr "Web Client"
