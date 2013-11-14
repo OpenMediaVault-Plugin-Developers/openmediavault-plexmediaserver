@@ -23,8 +23,8 @@ Ext.define("OMV.module.admin.service.plexmediaserver.WebClient", {
 
     initComponent : function() {
         var me = this;
-		var link = 'http://' + location.hostname + ':32400/manage';
-		
+        var link = 'http://' + location.hostname + ':32400/manage';
+
         me.html = "<iframe src='" + link + "' width='100%' height='100%' />";
         me.callParent(arguments);
     }

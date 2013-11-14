@@ -1,5 +1,5 @@
-# openmediavault-plexmediaserver
-# Copyright (C) 2013
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 09:13-0500\n"
+"POT-Creation-Date: 2013-11-14 11:32-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,36 +17,38 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Database files will move to new location if database volume is changed."
-msgstr "Database files will move to new location if database volume is changed."
-
 msgid "Database Folder"
-msgstr "Database Folder"
+msgstr ""
 
 msgid "Database Volume"
-msgstr "Database Volume"
+msgstr ""
+
+msgid "Database files will move to new location if database volume is changed."
+msgstr ""
 
 msgid "Enable"
-msgstr "Enable"
+msgstr ""
 
 msgid "General settings"
-msgstr "General settings"
+msgstr ""
 
 msgid "Plex Media Server"
-msgstr "Plex Media Server"
+msgstr ""
 
 msgid "Plex Web Client"
-msgstr "Plex Web Client"
+msgstr ""
+
+msgid "PlexMediaServer"
+msgstr ""
 
 msgid "Select a volume ..."
-msgstr "Select a volume ..."
+msgstr ""
 
 msgid "Settings"
-msgstr "Settings"
+msgstr ""
 
 msgid "Show tab containing Web Client frame"
-msgstr "Show tab containing Web Client frame"
+msgstr ""
 
 msgid "Web Client"
-msgstr "Web Client"
-
+msgstr ""

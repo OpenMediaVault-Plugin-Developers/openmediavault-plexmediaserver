@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (0.5.5) stable; urgency=low
+
+  * Add locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 14 Nov 2013 11:33:27 -0500
+
 openmediavault-plexmediaserver (0.5.4) stable; urgency=low
 
   * Added web client iframe tab
