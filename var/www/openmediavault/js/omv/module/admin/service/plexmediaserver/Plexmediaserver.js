@@ -21,9 +21,9 @@
 // require("js/omv/WorkspaceManager.js")
 
 OMV.WorkspaceManager.registerNode({
-	id: "plexmediaserver",
-	path: "/service",
-	text: _("Plex Media Server"),
-	icon16: "images/plexmediaserver.png",
-	iconSvg: "images/plexmediaserver.svg"
+    id      : "plexmediaserver",
+    path    : "/service",
+    text    : _("Plex Media Server"),
+    icon16  : "images/plexmediaserver.png",
+    iconSvg : "images/plexmediaserver.svg"
 });
