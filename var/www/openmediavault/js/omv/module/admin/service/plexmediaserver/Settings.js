@@ -1,4 +1,5 @@
 /**
+ * This file is part of OpenMediaVault.
  *
  * @license   http://www.gnu.org/licenses/gpl.html GPL Version 3
  * @author    OpenMediaVault Plugin Developers <plugins@omv-extras.org>
@@ -31,30 +32,30 @@
  * @derived OMV.workspace.form.Panel
  */
 Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
-    extend: "OMV.workspace.form.Panel",
+	extend: "OMV.workspace.form.Panel",
 
-    rpcService: "PlexMediaServer",
-    rpcGetMethod: "getSettings",
-    rpcSetMethod: "setSettings",
-    plugins: [{
-        ptype: "linkedfields",
-        correlations: [{
-            name: [
-                "openmanage"
-            ],
-            conditions: [
-                { name: "enable", value: false }
-            ],
-            properties: "disabled"
-        }]
-    }],
+	rpcService: "PlexMediaServer",
+	rpcGetMethod: "getSettings",
+	rpcSetMethod: "setSettings",
+	plugins: [{
+		ptype: "linkedfields",
+		correlations: [{
+			name: [
+				"openmanage"
+			],
+			conditions: [
+				{ name: "enable", value: false }
+			],
+			properties: "disabled"
+		}]
+	}],
 
-    initComponent : function () {
+	initComponent : function () {
         var me = this;
 
         me.on('load', function () {
-            var checked = me.findField('enable').checked;
-            var showtab = me.findField('showtab').checked;
+			var checked = me.findField('enable').checked;
+			var showtab = me.findField('showtab').checked;
             var parent = me.up('tabpanel');
 
             if (!parent)
@@ -67,23 +68,19 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 showtab ? webClientPanel.tab.show() : webClientPanel.tab.hide();
             }
         });
-
         me.callParent(arguments);
     },
-
-    getFormItems: function () {
-        return [{
-            xtype: "fieldset",
-            title: _("General settings"),
-            fieldDefaults: {
-                labelSeparator: ""
-            },
-            items: [{
-                xtype: "checkbox",
-                name: "enable",
-                fieldLabel: _("Enable"),
-                checked: false
-            },{
+	
+	getFormItems: function () {
+		return [{
+			xtype: "fieldset",
+			title: _("General settings"),
+			items: [{
+				xtype: "checkbox",
+				name: "enable",
+				fieldLabel: _("Enable"),
+				checked: false
+			},{
                 xtype: "combo",
                 name: "mntentref",
                 fieldLabel: _("Database Volume"),
@@ -117,10 +114,10 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                         property: "devicefile"
                     }]
                 }),
-                plugins: [{
-                    ptype: "fieldinfo",
-                    text: _("Database files will move to new location if database volume is changed.")
-                }]
+				plugins: [{
+					ptype: "fieldinfo",
+					text: _("Database files will move to new location if database volume is changed.")
+				}]
             },{
                 xtype: "textfield",
                 name: "db-folder",
@@ -128,32 +125,32 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 allowNone: true,
                 readOnly: true
             },{
-                xtype: "checkbox",
-                name: "showtab",
-                fieldLabel: _("Enable"),
-                checked: false,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("Show tab containing Web Client frame")
-                }]
-            }]
-        },{
-            xtype: "button",
-            name: "openmanage",
-            text: _("Plex Web Client"),
-            scope: this,
-            handler: function() {
-                var link = 'http://' + location.hostname + ':32400/manage';
+				xtype: "checkbox",
+				name: "showtab",
+				fieldLabel: _("Enable"),
+				boxLabel: _("Show tab containing Web Client frame."),
+				checked: false
+		},{
+			xtype: "button",
+			name: "openmanage",
+			text: _("Plex Web Client"),
+			scope: this,
+			handler: function() {
+				var link = 'http://' + location.hostname + ':32400/manage';
                 window.open(link, '_blank');
             }
-        }];
-    }
+        },{
+            border: false,
+            html: "<br />"
+        }]
+      }];
+   }
 });
 
 OMV.WorkspaceManager.registerPanel({
-    id: "settings",
-    path: "/service/plexmediaserver",
-    text: _("Settings"),
-    position: 10,
-    className: "OMV.module.admin.service.plexmediaserver.Settings"
+	id: "settings",
+	path: "/service/plexmediaserver",
+	text: _("Settings"),
+	position: 10,
+	className: "OMV.module.admin.service.plexmediaserver.Settings"
 });
