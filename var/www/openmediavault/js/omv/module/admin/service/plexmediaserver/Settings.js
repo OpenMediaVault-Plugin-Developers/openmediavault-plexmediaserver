@@ -141,7 +141,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
             }
         },{
             border : false,
-            html   : "<br />"
+            html   : "</p>"
         }]
       }];
    }
