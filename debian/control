@@ -2,12 +2,16 @@ Source: openmediavault-plexmediaserver
 Section: misc
 Priority: optional
 Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
-Build-Depends: debhelper (>= 7 )
+Build-Depends: debhelper (>= 9.0.0 )
 Standards-Version: 3.9.3
 Homepage: http://omv-extras.org/
 
 Package: openmediavault-plexmediaserver
 Architecture: all
-Depends: ${misc:Depends}, openmediavault (>= 0.5), openmediavault (<< 0.6), plexmediaserver
+Depends: ${misc:Depends}, openmediavault (>= 0.6), plexmediaserver
 Description: OpenMediaVault Plex Media Server plugin
  Stream media everywhere(tm)
+ .
+ Plex Media Server simplifies your life by organizing all of your
+ personal media, making it beautiful and streaming it to all of
+ your devices.
