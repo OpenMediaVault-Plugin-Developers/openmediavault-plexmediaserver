@@ -149,6 +149,6 @@ OMV.WorkspaceManager.registerPanel({
     id        : "settings",
     path      : "/service/plexmediaserver",
     text      : _("Settings"),
-    position  : 10,
+    position  : 20,
     className : "OMV.module.admin.service.plexmediaserver.Settings"
 });
