@@ -95,7 +95,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Information", {
                         'Now move the new package to this location <b>/var/cache/apt/archives</b>.  While in the archives directory the best method is to use "<b>wget downloadlink</b>" from Plex forums.' +
                         '</li>' +
                         '<li>' +
-                        'While on the post in the Plex forum where the package links are located right click on the 32 or 64 bit link.  Then click on "<b>copy link in address</b>".' +
+                        'While on the post in the Plex forum where the package links are located right click on the 32 or 64 bit link.  Then click on "<b>Copy link address</b>".' +
                         '</li>' +
                         '<li>' +
                         'In a Putty root session to your OMV: <b>cd /var/cache/apt/archives</b>' +
