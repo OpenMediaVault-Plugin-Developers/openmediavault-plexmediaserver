@@ -1,3 +1,10 @@
+openmediavault-plexmediaserver (0.6.2) stable; urgency=low
+
+  * Update locales
+  * Modify package trigger handling
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Wed, 16 Apr 2014 07:03:27 -0500
+
 openmediavault-plexmediaserver (0.6.1) stable; urgency=low
 
   * Update locales

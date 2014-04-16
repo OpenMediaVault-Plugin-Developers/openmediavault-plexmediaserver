@@ -60,6 +60,8 @@ case "$1" in
 		object="${object}<showtab>0</showtab>"
 		omv_config_add_element "/config/services" "plexmediaserver" "${object}" true
 
+        dpkg-trigger update-fixperms
+        dpkg-trigger update-locale
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)
