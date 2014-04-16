@@ -25,52 +25,52 @@ set -e
 . /usr/share/openmediavault/scripts/helper-functions
 
 case "$1" in
-	configure)
+    configure)
 
-		########################################################################
-		#  Update the configuration.
-		#	<config>
-		#		<services>
-		#			<plexmediaserver>
-		#				<enable>0</enable>
-		#				<db-folder></db-folder>
-		#				<mntentref></mntentref>
-		#				<showtab>0</showtab>
-		#			</plexmediaserver>
-		#		</services>
-		#	</config>
-		########################################################################
+        ########################################################################
+        #  Update the configuration.
+        #   <config>
+        #       <services>
+        #           <plexmediaserver>
+        #               <enable>0</enable>
+        #               <db-folder></db-folder>
+        #               <mntentref></mntentref>
+        #               <showtab>0</showtab>
+        #           </plexmediaserver>
+        #       </services>
+        #   </config>
+        ########################################################################
 
-		if omv_config_exists "/config/services/plexmediaserver"; then
-			ENABLE="$(omv_config_get "//services/plexmediaserver/enable")"
-			MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
-		else
-			ENABLE="0"
-			MNTENTREF=""
-		fi
+        if omv_config_exists "/config/services/plexmediaserver"; then
+            ENABLE="$(omv_config_get "//services/plexmediaserver/enable")"
+            MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
+        else
+            ENABLE="0"
+            MNTENTREF=""
+        fi
 
-		omv_config_delete "/config/services/plexmediaserver"
+        omv_config_delete "/config/services/plexmediaserver"
 
-		PLEX_HOME=$(getent passwd plex | cut -d: -f6)
+        PLEX_HOME=$(getent passwd plex | cut -d: -f6)
 
-		echo "Initialize configuration"
-		object="<enable>${ENABLE}</enable>"
-		object="${object}<db-folder>${PLEX_HOME}</db-folder>"
-		object="${object}<mntentref>${MNTENTREF}</mntentref>"
-		object="${object}<showtab>0</showtab>"
-		omv_config_add_element "/config/services" "plexmediaserver" "${object}" true
+        echo "Initialize configuration"
+        object="<enable>${ENABLE}</enable>"
+        object="${object}<db-folder>${PLEX_HOME}</db-folder>"
+        object="${object}<mntentref>${MNTENTREF}</mntentref>"
+        object="${object}<showtab>0</showtab>"
+        omv_config_add_element "/config/services" "plexmediaserver" "${object}" true
 
         dpkg-trigger update-fixperms
         dpkg-trigger update-locale
-	;;
+    ;;
 
-	abort-upgrade|abort-remove|abort-deconfigure)
-	;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
 
-	*)
-		echo "postinst called with unknown argument '$1'" >&2
-		exit 1
-	;;
+    *)
+        echo "postinst called with unknown argument '$1'" >&2
+        exit 1
+    ;;
 esac
 
 exit 0
