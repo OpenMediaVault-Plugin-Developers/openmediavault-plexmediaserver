@@ -50,7 +50,13 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Information", {
                         '<b>UDP 5353</b> (discovery service Plex DLNA Server for Bonjour/Avahi) [required for Apple clients]' +
                         '</li>' +
                         '<li>' +
+                        '<b>TCP 32400</b> (for access to Plex Media Server) [required]' +
+                        '</li>' +
+                        '<li>' +
                         '<b>UDP 32410</b>, <b>32412</b>, <b>32413</b>, <b>32414</b> (for current network discovery)' +
+                        '</li>' +
+                        '<li>' +
+                        '<b>TCP 32443</b> (for SSL access to Plex Media Server) [optional]' +
                         '</li>' +
                         '<li>' +
                         '<b>TCP 32469</b> (for access to the Plex DLNA Server)' +
