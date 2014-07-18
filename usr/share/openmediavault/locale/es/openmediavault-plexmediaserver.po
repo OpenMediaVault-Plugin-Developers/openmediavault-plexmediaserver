@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-10 13:18-0600\n"
-"PO-Revision-Date: 2014-02-11 13:01+0000\n"
-"Last-Translator: Raul Fernandez Garcia <raulfg3@gmail.com>\n"
+"POT-Creation-Date: 2014-07-18 11:39-0500\n"
+"PO-Revision-Date: 2014-07-18 16:40+0000\n"
+"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +34,9 @@ msgstr "Habilitar"
 msgid "General settings"
 msgstr "Opciones"
 
+msgid "Information"
+msgstr ""
+
 msgid "Plex Media Server"
 msgstr "Plex Media Server"
 
@@ -48,6 +51,9 @@ msgstr "Seleccionar un volumen ..."
 
 msgid "Settings"
 msgstr "Opciones"
+
+msgid "Setup Info"
+msgstr ""
 
 msgid "Show tab containing Web Client frame."
 msgstr "Mostrar en una pestaña el cliente Web."
