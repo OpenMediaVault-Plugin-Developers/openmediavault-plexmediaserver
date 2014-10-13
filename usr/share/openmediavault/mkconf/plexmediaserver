@@ -33,11 +33,12 @@ DB_FOLDER="$(omv_config_get "//services/plexmediaserver/db-folder")"
 chown -R plex:nogroup "${PLEX_HOME}"
 
 if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
-    invoke-rc.d ${SERVICE} stop
-    
+    invoke-rc.d ${SERVICE} stop || :
+
     if [ ! -d "${DB_FOLDER}/Library" ]; then
         mkdir -p "${DB_FOLDER}"
-        cp -rfp "${PLEX_HOME}/*" "${DB_FOLDER}/"
+        cp -rfp "${PLEX_HOME}/"* "${DB_FOLDER}/"
+        usermod -d "${DB_FOLDER}" plex
         rm -rf "${PLEX_HOME}"
     fi
 
