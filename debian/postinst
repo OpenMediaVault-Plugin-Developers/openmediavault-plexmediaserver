@@ -27,38 +27,30 @@ set -e
 case "$1" in
     configure)
 
-        ########################################################################
-        #  Update the configuration.
-        #   <config>
-        #       <services>
-        #           <plexmediaserver>
-        #               <enable>0</enable>
-        #               <db-folder></db-folder>
-        #               <mntentref></mntentref>
-        #               <showtab>0</showtab>
-        #           </plexmediaserver>
-        #       </services>
-        #   </config>
-        ########################################################################
+        SERVICE_XPATH_NAME="plexmediaserver"
+        SERVICE_XPATH="/config/services/${SERVICE_XPATH_NAME}"
 
-        if omv_config_exists "/config/services/plexmediaserver"; then
-            ENABLE="$(omv_config_get "//services/plexmediaserver/enable")"
-            MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
+        PLEX_HOME=$(getent passwd plex | cut -d: -f6)
+        chown -R plex:nogroup "${PLEX_HOME}"
+
+        if omv_config_exists "${SERVICE_XPATH}"; then
+            ENABLE="$(omv_config_get "${SERVICE_XPATH}/enable")"
+            MNTENTREF="$(omv_config_get "${SERVICE_XPATH}/mntentref")"
+            SHOWTAB="$(omv_config_get "${SERVICE_XPATH}/showtab")"
         else
             ENABLE="0"
             MNTENTREF=""
+            SHOWTAB="0"
         fi
 
-        omv_config_delete "/config/services/plexmediaserver"
-
-        PLEX_HOME=$(getent passwd plex | cut -d: -f6)
+        omv_config_delete "${SERVICE_XPATH}"
 
         echo "Initialize configuration"
         object="<enable>${ENABLE}</enable>"
         object="${object}<db-folder>${PLEX_HOME}</db-folder>"
         object="${object}<mntentref>${MNTENTREF}</mntentref>"
-        object="${object}<showtab>0</showtab>"
-        omv_config_add_element "/config/services" "plexmediaserver" "${object}" true
+        object="${object}<showtab>${SHOWTAB}</showtab>"
+        omv_config_add_element "/config/services" "${SERVICE_XPATH_NAME}" "${object}" true
 
         dpkg-trigger update-fixperms
         dpkg-trigger update-locale

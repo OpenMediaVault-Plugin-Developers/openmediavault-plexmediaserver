@@ -28,6 +28,8 @@ fi
 PLEX_HOME="$(getent passwd plex | cut -d: -f6)"
 DB_FOLDER="$(omv_config_get "//services/plexmediaserver/db-folder")"
 
+chown -R plex:nogroup "${PLEX_HOME}"
+
 if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
 	/etc/init.d/plexmediaserver stop
 	/usr/sbin/usermod -m -d "${DB_FOLDER}" plex

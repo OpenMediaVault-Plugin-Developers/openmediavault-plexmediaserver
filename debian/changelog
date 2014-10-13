@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (1.0.1) UNRELEASED; urgency=low
+
+  * Fix plex database user ownership
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 13 Oct 2014 06:25:57 -0500
+
 openmediavault-plexmediaserver (1.0) stable; urgency=low
 
   * Update locales
