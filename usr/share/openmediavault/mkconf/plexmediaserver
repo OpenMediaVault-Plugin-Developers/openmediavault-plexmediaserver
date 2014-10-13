@@ -20,6 +20,8 @@ set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
 
+SERVICE="plexmediaserver"
+
 # Enable/disable service
 if [ "$(omv_config_get "//services/plexmediaserver/enable")" != "1" ]; then
     exit 0
@@ -31,7 +33,17 @@ DB_FOLDER="$(omv_config_get "//services/plexmediaserver/db-folder")"
 chown -R plex:nogroup "${PLEX_HOME}"
 
 if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
-	/etc/init.d/plexmediaserver stop
-	/usr/sbin/usermod -m -d "${DB_FOLDER}" plex
-	/etc/init.d/plexmediaserver start
+    invoke-rc.d ${SERVICE} stop
+    
+    if [ ! -d "${DB_FOLDER}/Library" ]; then
+        mkdir -p "${DB_FOLDER}"
+        cp -rfp "${PLEX_HOME}/*" "${DB_FOLDER}/"
+        rm -rf "${PLEX_HOME}"
+    fi
+
+    chown -R plex:nogroup "${DB_FOLDER}"
+    invoke-rc.d ${SERVICE} start
 fi
+
+# created for plex uninstall because it fails if it can't remove this directory.
+mkdir -p /var/lib/plexmediaserver
