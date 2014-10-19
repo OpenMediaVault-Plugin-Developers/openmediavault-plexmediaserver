@@ -38,11 +38,11 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     if [ ! -d "${DB_FOLDER}/Library" ]; then
         mkdir -p "${DB_FOLDER}"
         cp -rfp "${PLEX_HOME}/"* "${DB_FOLDER}/"
-        usermod -d "${DB_FOLDER}" plex
         rm -rf "${PLEX_HOME}"
     fi
 
     chown -R plex:nogroup "${DB_FOLDER}"
+    usermod -d "${DB_FOLDER}" plex
     invoke-rc.d ${SERVICE} start
 fi
 
