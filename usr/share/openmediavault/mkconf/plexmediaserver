@@ -29,10 +29,16 @@ fi
 
 PLEX_HOME="$(getent passwd plex | cut -d: -f6)"
 DB_FOLDER="$(omv_config_get "//services/plexmediaserver/db-folder")"
+DB_MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
+DB_MNTENTDIR=$(xmlstarlet sel -t -m "//system/fstab/mntent[uuid='${DB_MNTENTREF}']" -v dir -b ${OMV_CONFIG_FILE} | xmlstarlet unesc)
 
 chown -R plex:nogroup "${PLEX_HOME}"
 
 if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
+    if ! omv_is_mounted "${DB_MNTENTDIR}" ; then
+        exit 1
+    fi
+
     invoke-rc.d ${SERVICE} stop || :
 
     if [ ! -d "${DB_FOLDER}/Library" ]; then

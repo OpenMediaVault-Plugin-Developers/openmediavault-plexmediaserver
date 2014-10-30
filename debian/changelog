@@ -1,3 +1,10 @@
+openmediavault-plexmediaserver (1.0.4) stable; urgency=low
+
+  * Check if database drive is mounted before moving database
+  * Update locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 30 Oct 2014 07:01:53 -0500
+
 openmediavault-plexmediaserver (1.0.3) stable; urgency=low
 
   * Fix database move
