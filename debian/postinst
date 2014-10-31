@@ -34,8 +34,8 @@ case "$1" in
         USER_ID="$(getent passwd plex | cut -d: -f3)"
 
         # Check current database uid.  If different, chown
-        dbid = "$(stat -c "%u" "${PLEX_HOME}/Library")"
-        if [ "${dbid}" != "${userid}" ]; then
+        DB_ID = "$(stat -c "%u" "${PLEX_HOME}/Library")"
+        if [ "${DB_ID}" != "${USER_ID}" ]; then
             echo "Changing to proper owner.  This could take a few minutes."
             chown -R plex:nogroup "${PLEX_HOME}"
         fi
