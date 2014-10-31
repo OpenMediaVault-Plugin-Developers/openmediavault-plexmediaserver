@@ -47,7 +47,14 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         rm -rf "${PLEX_HOME}"
     fi
 
-    chown -R plex:nogroup "${DB_FOLDER}"
+    # Check current database uid.  If different, chown
+    dbid = "$(stat -c "%u" "${DB_FOLDER}/Library")"
+    userid="$(getent passwd plex | cut -d: -f3)"
+    if [ "${dbid}" != "${userid}" ]; then
+        echo "Changing to proper owner.  This could take a few minutes."
+        chown -R plex:nogroup "${DB_FOLDER}"
+    fi
+
     usermod -d "${DB_FOLDER}" plex
     invoke-rc.d ${SERVICE} start
 fi

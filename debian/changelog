@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (1.0.5) stable; urgency=low
+
+  * Fix uid only if necessary
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 31 Oct 2014 16:57:46 -0500
+
 openmediavault-plexmediaserver (1.0.4) stable; urgency=low
 
   * Check if database drive is mounted before moving database
