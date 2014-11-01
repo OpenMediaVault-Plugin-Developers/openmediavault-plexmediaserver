@@ -48,7 +48,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     fi
 
     # Check current database uid.  If different, chown
-    dbid = "$(stat -c "%u" "${DB_FOLDER}/Library")"
+    dbid="$(stat -c "%u" "${DB_FOLDER}/Library")"
     userid="$(getent passwd plex | cut -d: -f3)"
     if [ "${dbid}" != "${userid}" ]; then
         echo "Changing to proper owner.  This could take a few minutes."
