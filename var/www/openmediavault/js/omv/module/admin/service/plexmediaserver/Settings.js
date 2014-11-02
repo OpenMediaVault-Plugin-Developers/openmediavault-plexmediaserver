@@ -40,13 +40,12 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
     plugins      : [{
         ptype        : "linkedfields",
         correlations : [{
-            name       : [
-                "openmanage"
+            conditions  : [
+                { name : "enable", value : true }
             ],
-            conditions : [
-                { name  : "enable", value : false }
-            ],
-            properties : "disabled"
+            properties : function(valid, field) {
+                this.setButtonDisabled("webclient", !valid);
+            }
         }]
     }],
 
@@ -69,6 +68,25 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
             }
         });
         me.callParent(arguments);
+    },
+
+    getButtonItems : function() {
+        var me = this;
+        var items = me.callParent(arguments);
+        items.push({
+            id       : me.getId() + "-webclient",
+            xtype    : "button",
+            text     : _("Plex Web Client"),
+            icon     : "images/plexmediaserver.png",
+            iconCls  : Ext.baseCSSPrefix + "btn-icon-16x16",
+            disabled : true,
+            scope    : me,
+            handler  : function() {
+                var link = 'http://' + location.hostname + ':32400/manage';
+                window.open(link, '_blank');
+            }
+        });
+        return items;
     },
 
     getFormItems: function () {
@@ -130,19 +148,9 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 fieldLabel : _("Enable"),
                 boxLabel   : _("Show tab containing Web Client frame."),
                 checked    : false
-        },{
-            xtype   : "button",
-            name    : "openmanage",
-            text    : _("Plex Web Client"),
-            scope   : this,
-            handler : function() {
-                var link = 'http://' + location.hostname + ':32400/manage';
-                window.open(link, '_blank');
-            },
-            margin  : "0 0 5 0"
-        }]
-      }];
-   }
+            }]
+        }];
+    }
 });
 
 OMV.WorkspaceManager.registerPanel({
