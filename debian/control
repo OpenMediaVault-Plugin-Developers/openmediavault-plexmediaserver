@@ -1,5 +1,6 @@
 Source: openmediavault-plexmediaserver
-Section: misc
+Section: net
+XB-Plugin-Section: multimedia
 Priority: optional
 Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
 Build-Depends: debhelper (>= 9.0.0 )
