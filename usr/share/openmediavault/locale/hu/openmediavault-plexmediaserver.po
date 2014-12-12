@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Adam Radovits <adamradovits12@hotmail.com>, 2013-2014
+# Ádám Radovits <adamradovits12@hotmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-18 11:39-0500\n"
-"PO-Revision-Date: 2014-08-05 19:31+0000\n"
-"Last-Translator: Adam Radovits <adamradovits12@hotmail.com>\n"
+"PO-Revision-Date: 2014-11-14 19:50+0000\n"
+"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

@@ -3,8 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Alexander Savchenko, 2013
-# артур Мудрых <arturmon82@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
@@ -12,46 +10,46 @@ msgstr ""
 "POT-Creation-Date: 2014-07-18 11:39-0500\n"
 "PO-Revision-Date: 2014-11-14 19:50+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/ru/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: pt\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Database Folder"
-msgstr "Папка базы данных"
+msgstr ""
 
 msgid "Database Volume"
-msgstr "Том базы данных"
+msgstr ""
 
 msgid ""
 "Database files will move to new location if database volume is changed."
-msgstr "Файлы баз данных перейдет на новое место, если том базы данных будет изменен."
+msgstr ""
 
 msgid "Enable"
-msgstr "Включить"
+msgstr ""
 
 msgid "General settings"
-msgstr "Основные настройки"
+msgstr ""
 
 msgid "Information"
 msgstr ""
 
 msgid "Plex Media Server"
-msgstr "Plex Media Server"
+msgstr ""
 
 msgid "Plex Web Client"
-msgstr "Plex веб-клиент"
+msgstr ""
 
 msgid "PlexMediaServer"
-msgstr "PlexMediaServer"
+msgstr ""
 
 msgid "Select a volume ..."
-msgstr "Выберите том ..."
+msgstr ""
 
 msgid "Settings"
-msgstr "Настройки"
+msgstr ""
 
 msgid "Setup Info"
 msgstr ""
@@ -60,4 +58,4 @@ msgid "Show tab containing Web Client frame."
 msgstr ""
 
 msgid "Web Client"
-msgstr "Веб-клиент"
+msgstr ""

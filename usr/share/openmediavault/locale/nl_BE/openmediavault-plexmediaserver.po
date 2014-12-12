@@ -3,54 +3,53 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# pezman <pezbot@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-18 11:39-0500\n"
-"PO-Revision-Date: 2014-11-14 19:50+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
-"Language-Team: Norwegian (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/no/)\n"
+"PO-Revision-Date: 2013-10-28 14:57+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/nl_BE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: no\n"
+"Language: nl_BE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Database Folder"
-msgstr "Database Mappe"
+msgstr ""
 
 msgid "Database Volume"
-msgstr "Database Volume"
+msgstr ""
 
 msgid ""
 "Database files will move to new location if database volume is changed."
-msgstr "Database filene vil flytte til ny lokasjon hvis database volumet endres"
+msgstr ""
 
 msgid "Enable"
-msgstr "Aktiver"
+msgstr ""
 
 msgid "General settings"
-msgstr "Genrelle instillinger"
+msgstr ""
 
 msgid "Information"
 msgstr ""
 
 msgid "Plex Media Server"
-msgstr "Plex Media Server"
+msgstr ""
 
 msgid "Plex Web Client"
-msgstr "Plex Web Client"
+msgstr ""
 
 msgid "PlexMediaServer"
-msgstr "PlexMediaServer"
+msgstr ""
 
 msgid "Select a volume ..."
-msgstr "Velg et volum ..."
+msgstr ""
 
 msgid "Settings"
-msgstr "Instillinger"
+msgstr ""
 
 msgid "Setup Info"
 msgstr ""
@@ -59,4 +58,4 @@ msgid "Show tab containing Web Client frame."
 msgstr ""
 
 msgid "Web Client"
-msgstr "Web Klient"
+msgstr ""
