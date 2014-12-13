@@ -26,6 +26,43 @@ Ext.define("OMV.module.admin.service.plexmediaserver.WebClient", {
 
     initComponent : function() {
         var me = this;
+
+        OMV.Rpc.request({
+            scope    : this,
+            callback : function(id, success, response) {
+                var parent = me.up('tabpanel');
+
+                if (!parent)
+                    return;
+
+                var enable = response.enable;
+                var showtab = response.showtab;
+                var webClientPanel = parent.down('panel[title=' + _("Web Client") + ']');
+
+                if (webClientPanel) {
+                    if (enable) {
+                        webClientPanel.enable();
+                    } else {
+                        webClientPanel.disable();
+                        panel = parent.down('panel[title=' + _("Settings") + ']');
+                        if (panel) {
+                            parent.setActiveTab(panel);
+                        }
+                    }
+                    if (showtab) {
+                        webClientPanel.tab.show();
+                    } else {
+                        webClientPanel.tab.hide();
+                    }
+                }
+            },
+            relayErrors : false,
+            rpcData     : {
+                service  : "PlexMediaServer",
+                method   : "getSettings"
+            }
+        });
+
         var link = 'http://' + location.hostname + ':32400/manage';
 
         me.html = "<iframe src='" + link + "' width='100%' height='100%' />";
