@@ -40,6 +40,9 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
     plugins      : [{
         ptype        : "linkedfields",
         correlations : [{
+            name        : [
+              "enable"
+            ],
             conditions  : [
                 { name : "enable", value : true }
             ],
