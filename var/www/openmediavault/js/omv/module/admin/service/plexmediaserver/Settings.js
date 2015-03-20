@@ -37,6 +37,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
     rpcService   : "PlexMediaServer",
     rpcGetMethod : "getSettings",
     rpcSetMethod : "setSettings",
+    
     plugins      : [{
         ptype        : "linkedfields",
         correlations : [{
