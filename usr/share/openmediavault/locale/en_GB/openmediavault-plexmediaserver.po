@@ -3,60 +3,60 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Zacharie ARNAISE <spacebrain.damage@gmail.com>, 2013
+# Andi Chandler <andi@gowling.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-18 11:39-0500\n"
-"PO-Revision-Date: 2014-11-14 19:50+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/fr/)\n"
+"PO-Revision-Date: 2015-03-19 19:32+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
+"Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Database Folder"
-msgstr "Dossier de la base de données"
+msgstr "Database Folder"
 
 msgid "Database Volume"
-msgstr "Volume de la base de données"
+msgstr "Database Volume"
 
 msgid ""
 "Database files will move to new location if database volume is changed."
-msgstr "Les fichiers de la base de données se déplaceront vers un nouvel emplacement si le volume de la base de données et changé."
+msgstr "Database files will move to new location if database volume is changed."
 
 msgid "Enable"
-msgstr "Activer"
+msgstr "Enable"
 
 msgid "General settings"
-msgstr "Paramètres généraux"
+msgstr "General settings"
 
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 msgid "Plex Media Server"
-msgstr "Serveur Plex Media"
+msgstr "Plex Media Server"
 
 msgid "Plex Web Client"
-msgstr "Web Client Plex"
+msgstr "Plex Web Client"
 
 msgid "PlexMediaServer"
 msgstr "PlexMediaServer"
 
 msgid "Select a volume ..."
-msgstr "Sélectionnez un volume..."
+msgstr "Select a volume ..."
 
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "Settings"
 
 msgid "Setup Info"
-msgstr ""
+msgstr "Setup Info"
 
 msgid "Show tab containing Web Client frame."
-msgstr ""
+msgstr "Show tab containing Web Client frame."
 
 msgid "Web Client"
-msgstr "Client Web"
+msgstr "Web Client"

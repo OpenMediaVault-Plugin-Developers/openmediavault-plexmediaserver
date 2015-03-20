@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Alexander Savchenko, 2013
+# Alexander Savchenko, 2015
 # артур Мудрых <arturmon82@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-18 11:39-0500\n"
-"PO-Revision-Date: 2014-11-14 19:50+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
+"PO-Revision-Date: 2015-03-04 19:37+0000\n"
+"Last-Translator: Alexander Savchenko\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +37,7 @@ msgid "General settings"
 msgstr "Основные настройки"
 
 msgid "Information"
-msgstr ""
+msgstr "Информация"
 
 msgid "Plex Media Server"
 msgstr "Plex Media Server"
