@@ -47,7 +47,9 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     pkill -9 -u `id -u plex` || :
 
     if [ ! -d "${DB_FOLDER}/Library" ]; then
-        usermod -d "${DB_FOLDER}" -m plex
+        cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
+        rm -rf "${PLEX_HOME}"
+        usermod -d "${DB_FOLDER}" plex
     fi
 
     # Check current database uid.  If different, chown
