@@ -31,6 +31,13 @@ case "$1" in
 	purge)
 		# Remove the configuration data
 		omv_config_delete "/config/services/plexmediaserver"
+		if [ -d /opt/plexpy ]; then
+			invoke-rc.d plexpy stop || :
+			update-rc.d -f plexpy remove
+			rm -f /etc/default/plexpy >/dev/null 2>&1
+			rm -Rf /opt/plexpy >/dev/null 2>&1
+			rm -f /etc/init.d/plexpy >/dev/null 2>&1
+		fi
 	;;
 
 	upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)

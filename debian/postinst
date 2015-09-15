@@ -50,6 +50,16 @@ case "$1" in
             SHOWTAB="0"
         fi
 
+        if omv_config_exists "${SERVICE_XPATH}/pyport"; then
+            PYENABLE="$(omv_config_get "${SERVICE_XPATH}/pyenable")"
+            PYRUN="$(omv_config_get "${SERVICE_XPATH}/pyrun")"
+            PYPORT="$(omv_config_get "${SERVICE_XPATH}/pyport")"
+        else
+            PYENABLE="0"
+            PYRUN="0"
+            PYPORT="8182"
+        fi
+
         omv_config_delete "${SERVICE_XPATH}"
 
         echo "Initialize configuration"
@@ -57,6 +67,9 @@ case "$1" in
         object="${object}<db-folder>${PLEX_HOME}</db-folder>"
         object="${object}<mntentref>${MNTENTREF}</mntentref>"
         object="${object}<showtab>${SHOWTAB}</showtab>"
+        object="${object}<pyenable>${PYENABLE}</pyenable>"
+        object="${object}<pyrun>${PYRUN}</pyrun>"
+        object="${object}<pyport>${PYPORT}</pyport>"
         omv_config_add_element "/config/services" "${SERVICE_XPATH_NAME}" "${object}" true
 
         dpkg-trigger update-fixperms

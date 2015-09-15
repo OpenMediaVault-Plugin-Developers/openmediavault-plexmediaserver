@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (1.0.13) stable; urgency=low
+
+  * Add option for Plexpy
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Wed, 13 Sep 2015 21:52:00 -0000
+
 openmediavault-plexmediaserver (1.0.12) stable; urgency=low
 
   * Fix database move

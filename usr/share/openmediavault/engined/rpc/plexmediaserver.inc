@@ -61,8 +61,11 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $xpath);
 
         // Modify the result object.
-        $object['enable']  = boolval($object['enable']);
-        $object['showtab'] = boolval($object['showtab']);
+        $object['enable']   = boolval($object['enable']);
+        $object['showtab']  = boolval($object['showtab']);
+        $object['pyenable'] = boolval($object['pyenable']);
+        $object['pyrun']    = boolval($object['pyrun']);
+        $object["pyport"]   = intval($object["pyport"]);
 
         return $object;
     }
@@ -85,9 +88,12 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
             "type"       : "object",
             "properties" : {
                 "enable"    : { "type" : "boolean" },
+                "pyenable"  : { "type" : "boolean", "optional" : true },
+                "pyrun"     : { "type" : "boolean", "optional" : true },
                 "db-folder" : { "type" : "string", "optional" : true },
                 "mntentref" : { ' . $GLOBALS['OMV_JSONSCHEMA_UUID_NONE'] . ' },
-                "showtab"   : { "type" : "boolean" }
+                "showtab"   : { "type" : "boolean" },
+                "pyport"    : { "type" : "integer","minimum":1024,"maximum":65535, "optional" : true }
             }
         }');
 
@@ -101,6 +107,9 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
         // Prepare configuration data
         $object = array(
             "enable"    => array_boolval($params, 'enable'),
+            "pyenable"  => array_boolval($params, 'pyenable'),
+            "pyrun"     => array_boolval($params, 'pyrun'),
+            "pyport"    => $params["pyport"],
             "db-folder" => $params['db-folder'],
             "mntentref" => $params['mntentref'],
             "showtab"   => array_boolval($params, 'showtab')

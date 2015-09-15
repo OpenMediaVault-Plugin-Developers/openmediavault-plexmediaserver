@@ -22,6 +22,63 @@ set -e
 
 SERVICE="plexmediaserver"
 
+# Enable/disable Plexpy
+if [ "$(omv_config_get "//services/plexmediaserver/pyenable")" = "1" ]; then
+    if [ ! -d /opt/plexpy ]; then
+        git clone https://github.com/drzoidberg33/plexpy.git /opt/plexpy
+        chmod +x /opt/plexpy/init-scripts/init.ubuntu
+        ln -s /opt/plexpy/init-scripts/init.ubuntu /etc/init.d/plexpy
+        chown -R plex:plex /opt/plexpy
+    fi
+
+    # Configure
+    if [ "$(omv_config_get "//services/plexmediaserver/pyrun")" = "1" ]; then
+        # Create defaults
+        HP_PORT="$(omv_config_get "//services/plexmediaserver/pyport")"
+        cat <<EOF > /etc/default/plexpy
+## The defaults
+# Run as username
+HP_USER=plex
+
+# Path to app HP_HOME=path_to_app_PlexPy.py
+HP_HOME=/opt/plexpy
+
+# Data directory where plexpy.db, cache and logs are stored
+HP_DATA=/opt/plexpy
+
+# Path to store PID file
+HP_PIDFILE=/var/run/plexpy/plexpy.pid
+
+# Path to python bin
+PYTHON_BIN=/usr/bin/python
+
+# Extra daemon option like: HP_OPTS=" --config=/opt/plexpy/config.ini"
+HP_OPTS=" --config=/opt/plexpy/config.ini"
+
+# Extra start-stop-daemon option like START_OPTS=" --group=users"
+SSD_OPTS=
+
+# Hardcoded port to run on, overrides config.ini settings
+HP_PORT="${HP_PORT} "
+
+EOF
+
+    update-rc.d plexpy defaults
+    invoke-rc.d plexpy restart || :
+    else
+        invoke-rc.d plexpy stop || :
+        update-rc.d -f plexpy remove
+    fi
+else
+    if [ -d /opt/plexpy ]; then
+        invoke-rc.d plexpy stop || :
+        update-rc.d -f plexpy remove
+        rm -f /etc/default/plexpy >/dev/null 2>&1
+        rm -Rf /opt/plexpy >/dev/null 2>&1
+        rm -f /etc/init.d/plexpy >/dev/null 2>&1
+    fi
+fi
+
 # Enable/disable service
 if [ "$(omv_config_get "//services/plexmediaserver/enable")" != "1" ]; then
     exit 0

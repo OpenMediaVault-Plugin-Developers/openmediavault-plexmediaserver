@@ -153,8 +153,36 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 boxLabel   : _("Show tab containing Web Client frame."),
                 checked    : false
             }]
+                },{
+            xtype    : "fieldset",
+            title    : "Plexpy addon",
+            defaults : {
+                labelSeparator : ""
+            },
+            items : [{
+                xtype      : "checkbox",
+                name       : "pyenable",
+                fieldLabel : _("Install"),
+                boxLabel   : _("Will install/uninstall Plexpy."),
+                checked    : false
+            }, {
+                xtype      : "checkbox",
+                name       : "pyrun",
+                fieldLabel : _("Run"),
+                checked    : false
+            }, {
+                xtype: "numberfield",
+                name: "pyport",
+                fieldLabel: _("Port"),
+                vtype: "port",
+                minValue: 1024,
+                maxValue: 65535,
+                allowDecimals: false,
+                allowBlank: true,
+                value: 8182
+            }]
         }];
-    }
+    },
 });
 
 OMV.WorkspaceManager.registerPanel({
