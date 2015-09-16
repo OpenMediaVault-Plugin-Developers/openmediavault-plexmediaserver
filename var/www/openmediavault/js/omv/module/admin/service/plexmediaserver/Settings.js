@@ -50,6 +50,30 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
             properties : function(valid, field) {
                 this.setButtonDisabled("webclient", !valid);
             }
+        },{
+            name       : [
+                "pyenable",
+            ],
+            conditions : [
+                { name  : "enable", value : true }
+            ],
+            properties : "show"
+        },{
+            name       : [
+                "pyrun",
+            ],
+            conditions : [
+                { name  : "pyenable", value : true }
+            ],
+            properties : "show"
+        },{
+            name       : [
+                "pyport",
+            ],
+            conditions : [
+                { name  : "pyenable", value : true }
+            ],
+            properties : "show"
         }]
     }],
 
