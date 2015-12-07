@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (1.0.14) stable; urgency=low
+
+  * Add requirment for python
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 07 Dec 2015 12:47:00 -0000
+
 openmediavault-plexmediaserver (1.0.13) stable; urgency=low
 
   * Add option for Plexpy
