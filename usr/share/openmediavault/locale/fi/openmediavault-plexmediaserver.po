@@ -10,64 +10,64 @@ msgstr ""
 "POT-Creation-Date: 2016-01-02 11:56-0600\n"
 "PO-Revision-Date: 2016-01-02 17:56+0000\n"
 "Last-Translator: Aaron Murray <aaronmurray27@gmail.com>\n"
-"Language-Team: English (United States) (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/en_US/)\n"
+"Language-Team: Finnish (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en_US\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Database Folder"
-msgstr "Database Folder"
+msgstr ""
 
 msgid "Database Volume"
-msgstr "Database Volume"
+msgstr ""
 
 msgid ""
 "Database files will move to new location if database volume is changed."
-msgstr "Database files will move to new location if database volume is changed."
+msgstr ""
 
 msgid "Enable"
-msgstr "Enable"
+msgstr ""
 
 msgid "General settings"
-msgstr "General settings"
+msgstr ""
 
 msgid "Information"
-msgstr "Information"
+msgstr ""
 
 msgid "Install"
-msgstr "Install"
+msgstr ""
 
 msgid "Plex Media Server"
-msgstr "Plex Media Server"
+msgstr ""
 
 msgid "Plex Web Client"
-msgstr "Plex Web Client"
+msgstr ""
 
 msgid "PlexMediaServer"
-msgstr "PlexMediaServer"
+msgstr ""
 
 msgid "Port"
-msgstr "Port"
+msgstr ""
 
 msgid "Run"
-msgstr "Run"
+msgstr ""
 
 msgid "Select a volume ..."
-msgstr "Select a volume ..."
+msgstr ""
 
 msgid "Settings"
-msgstr "Settings"
+msgstr ""
 
 msgid "Setup Info"
-msgstr "Setup Info"
+msgstr ""
 
 msgid "Show tab containing Web Client frame."
-msgstr "Show tab containing Web Client frame."
+msgstr ""
 
 msgid "Web Client"
-msgstr "Web Client"
+msgstr ""
 
 msgid "Will install/uninstall Plexpy."
-msgstr "Will install/uninstall Plexpy."
+msgstr ""

@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# zubr139, 2013
+# zubr139, 2013,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-18 11:39-0500\n"
-"PO-Revision-Date: 2014-11-14 19:50+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/uk/)\n"
+"POT-Creation-Date: 2016-01-02 11:56-0600\n"
+"PO-Revision-Date: 2016-01-02 17:56+0000\n"
+"Last-Translator: Aaron Murray <aaronmurray27@gmail.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,6 +35,9 @@ msgid "General settings"
 msgstr "Загальні налаштування"
 
 msgid "Information"
+msgstr "Інформація"
+
+msgid "Install"
 msgstr ""
 
 msgid "Plex Media Server"
@@ -46,6 +49,12 @@ msgstr "Plex веб-клієнта"
 msgid "PlexMediaServer"
 msgstr "PlexMediaServer"
 
+msgid "Port"
+msgstr ""
+
+msgid "Run"
+msgstr ""
+
 msgid "Select a volume ..."
 msgstr "Оберіть том ..."
 
@@ -53,10 +62,13 @@ msgid "Settings"
 msgstr "Налаштування"
 
 msgid "Setup Info"
-msgstr ""
+msgstr "Налагодження інформації"
 
 msgid "Show tab containing Web Client frame."
 msgstr ""
 
 msgid "Web Client"
 msgstr "Веб-клієнт"
+
+msgid "Will install/uninstall Plexpy."
+msgstr ""

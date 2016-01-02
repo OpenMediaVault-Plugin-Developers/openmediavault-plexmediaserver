@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-18 11:39-0500\n"
-"PO-Revision-Date: 2014-11-14 19:50+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/openmediavault-plexmediaserver/language/cs_CZ/)\n"
+"POT-Creation-Date: 2016-01-02 11:56-0600\n"
+"PO-Revision-Date: 2016-01-02 17:56+0000\n"
+"Last-Translator: Aaron Murray <aaronmurray27@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,44 +19,56 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 msgid "Database Folder"
-msgstr ""
+msgstr "Složka s databází"
 
 msgid "Database Volume"
-msgstr ""
+msgstr "Svazek s databází"
 
 msgid ""
 "Database files will move to new location if database volume is changed."
-msgstr ""
+msgstr "Při změně svazku s databází budou soubory databáze přesunuty to nového umístění."
 
 msgid "Enable"
-msgstr ""
+msgstr "Zapnout"
 
 msgid "General settings"
-msgstr ""
+msgstr "Obecná nastavení"
 
 msgid "Information"
+msgstr "Informace"
+
+msgid "Install"
 msgstr ""
 
 msgid "Plex Media Server"
-msgstr ""
+msgstr "Mediální server Plex"
 
 msgid "Plex Web Client"
-msgstr ""
+msgstr "Plex webový klient"
 
 msgid "PlexMediaServer"
+msgstr "PlexMediaServer"
+
+msgid "Port"
+msgstr ""
+
+msgid "Run"
 msgstr ""
 
 msgid "Select a volume ..."
-msgstr ""
+msgstr "Vyberte svazek…"
 
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 msgid "Setup Info"
-msgstr ""
+msgstr "Informace o nastavení"
 
 msgid "Show tab containing Web Client frame."
-msgstr ""
+msgstr "Zobrazit panel s webovým klientem."
 
 msgid "Web Client"
+msgstr "Webový klient"
+
+msgid "Will install/uninstall Plexpy."
 msgstr ""
