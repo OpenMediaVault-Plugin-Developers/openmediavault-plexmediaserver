@@ -4,7 +4,7 @@
  * @author    Volker Theile <volker.theile@openmediavault.org>
  * @author    OpenMediaVault Plugin Developers <plugins@omv-extras.org>
  * @copyright Copyright (c) 2009-2013 Volker Theile
- * @copyright Copyright (c) 2013-2014 OpenMediaVault Plugin Developers
+ * @copyright Copyright (c) 2013-2016 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,18 +26,39 @@ require_once("openmediavault/util.inc");
 require_once("openmediavault/rpcservice.inc");
 require_once("openmediavault/notify.inc");
 
-class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
+class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract
+{
+    private $serviceName = "plexmediaserver";
+
     /**
      * Get the RPC service name.
      */
-    public function getName() {
+    public function getName()
+    {
         return "PlexMediaServer";
+    }
+
+    private function getEventMessagePath()
+    {
+        return sprintf(
+            "org.openmediavault.services.%s",
+            $this->serviceName
+        );
+    }
+
+    private function getXpath()
+    {
+        return sprintf(
+            "/config/services/%s",
+            $this->serviceName
+        );
     }
 
     /**
      * Initialize the RPC service.
      */
-    public function initialize() {
+    public function initialize()
+    {
         $this->registerMethod("getSettings");
         $this->registerMethod("setSettings");
     }
@@ -49,17 +70,24 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
      * @return The requested configuration object.
      * @throw E_CONFIG_GET_OBJECT_FAILED
      */
-    public function getSettings($params, $context) {
+    public function getSettings($params, $context)
+    {
         global $xmlConfig;
+
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            [ "role" => OMV_ROLE_ADMINISTRATOR ]
+        );
 
         // Get the configuration object.
-        $xpath = "//services/plexmediaserver";
-        $object = $xmlConfig->get($xpath);
-        if(is_null($object))
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $xpath);
-
+        $object = $xmlConfig->get($this->getXpath());
+        if(is_null($object)) {
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
+                $this->getXpath()
+            );
+        }
         // Modify the result object.
         $object['enable']   = boolval($object['enable']);
         $object['showtab']  = boolval($object['showtab']);
@@ -78,10 +106,14 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
      * @throw E_CONFIG_GET_OBJECT_FAILED
      * @throw E_CONFIG_SET_OBJECT_FAILED
      */
-    public function setSettings($params, $context) {
+    public function setSettings($params, $context)
+    {
         global $xmlConfig;
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            [ "role" => OMV_ROLE_ADMINISTRATOR ]
+        );
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, '{
@@ -101,11 +133,11 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
         $deviceDir = $xmlConfig->get($xpath);
         $deviceDir = $deviceDir['dir'];
 
-        $dbFolder = "{$deviceDir}/plexmediaserver";
+        $dbFolder = sprintf("{$deviceDir}/%s", $this->serviceName);
         $params['db-folder'] = $dbFolder;
 
         // Prepare configuration data
-        $object = array(
+        $object = [
             "enable"    => array_boolval($params, 'enable'),
             "pyenable"  => array_boolval($params, 'pyenable'),
             "pyrun"     => array_boolval($params, 'pyrun'),
@@ -113,15 +145,23 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
             "db-folder" => $params['db-folder'],
             "mntentref" => $params['mntentref'],
             "showtab"   => array_boolval($params, 'showtab')
-        );
+        ];
 
         // Set configuration object
-        if (false === $xmlConfig->replace("//services/plexmediaserver", $object))
-            throw new OMVException(OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED, $this->getXpath());
+        if (false === $xmlConfig->replace($this->getXpath(), $object)) {
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED,
+                $this->getXpath()
+            );
+        }
 
         // Notify configuration changes
         $dispatcher = &OMVNotifyDispatcher::getInstance();
-        $dispatcher->notify(OMV_NOTIFY_MODIFY, "org.openmediavault.services.plexmediaserver", $object);
+        $dispatcher->notify(
+            OMV_NOTIFY_MODIFY,
+            $this->getEventMessagePath(),
+            $object
+        );
 
         return $object;
     }
@@ -130,4 +170,3 @@ class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract {
 // Register the RPC service.
 $rpcServiceMgr = &OMVRpcServiceMgr::getInstance();
 $rpcServiceMgr->registerService(new OMVRpcServicePlexMediaServer());
-?>

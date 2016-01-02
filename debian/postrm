@@ -4,7 +4,7 @@
 # @author    Volker Theile <volker.theile@openmediavault.org>
 # @author    OpenMediaVault Plugin Developers <plugins@omv-extras.org>
 # @copyright Copyright (c) 2009-2013 Volker Theile
-# @copyright Copyright (c) 2013-2014 OpenMediaVault Plugin Developers
+# @copyright Copyright (c) 2013-2016 OpenMediaVault Plugin Developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,9 +31,10 @@ case "$1" in
 	purge)
 		# Remove the configuration data
 		omv_config_delete "/config/services/plexmediaserver"
-		if [ -d /opt/plexpy ]; then
-			invoke-rc.d plexpy stop || :
-			update-rc.d -f plexpy remove
+
+        if [ -d /opt/plexpy ]; then
+            deb-systemd-helper disable plexpy >/dev/null || true
+            deb-systemd-invoke stop plexpy >/dev/null || true
 			rm -f /etc/default/plexpy >/dev/null 2>&1
 			rm -Rf /opt/plexpy >/dev/null 2>&1
 			rm -f /etc/init.d/plexpy >/dev/null 2>&1

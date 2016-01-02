@@ -4,12 +4,13 @@ XB-Plugin-Section: multimedia
 Priority: optional
 Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
 Build-Depends: debhelper (>= 9.0.0 )
-Standards-Version: 3.9.3
+Standards-Version: 3.9.6
 Homepage: http://omv-extras.org/
 
 Package: openmediavault-plexmediaserver
 Architecture: all
-Depends: ${misc:Depends}, openmediavault (>= 0.6), plexmediaserver, git-core, python
+Depends: ${misc:Depends}, openmediavault (>= 3.0), plexmediaserver,
+ git-core, python
 Description: OpenMediaVault Plex Media Server plugin
  Stream media everywhere(tm)
  .
