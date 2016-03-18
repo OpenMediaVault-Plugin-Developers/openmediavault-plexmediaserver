@@ -52,7 +52,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
             }
         },{
             name       : [
-                "plexply",
+                "plexpy",
             ],
             conditions : [
                 { name  : "enable", value : true }
@@ -180,7 +180,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 },{
             xtype    : "fieldset",
             title    : "Plexpy addon",
-            name     : "plexply",
+            name     : "plexpy",
             defaults : {
                 labelSeparator : ""
             },
