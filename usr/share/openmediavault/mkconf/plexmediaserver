@@ -83,6 +83,7 @@ if [ "$(omv_config_get "//services/plexmediaserver/enable")" != "1" ]; then
     exit 0
 fi
 
+DEFAULT_HOME="/var/lib/plexmediaserver"
 PLEX_HOME="$(getent passwd plex | cut -d: -f6)"
 DB_FOLDER="$(omv_config_get "//services/plexmediaserver/db-folder")"
 DB_MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
@@ -106,6 +107,8 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
         rm -rf "${PLEX_HOME}"
         usermod -d "${DB_FOLDER}" plex
+        sed -i "s#${DEFAULT_HOME}#${PLEX_HOME}#" /etc/systemd/system/plexmediaserver.service
+        systemctl daemon-reload
     fi
 
     # Check current database uid.  If different, chown
