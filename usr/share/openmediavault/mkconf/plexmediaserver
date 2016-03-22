@@ -100,7 +100,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     fi
 
     deb-systemd-invoke stop ${SERVICE}.service >/dev/null || true
-    pkill -9 -u `id -u plex` || :
+    killall -u plex || :
 
     if [ ! -d "${DB_FOLDER}/Library" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
