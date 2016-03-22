@@ -34,7 +34,7 @@ case "$1" in
         USER_ID="$(getent passwd plex | cut -d: -f3)"
         
         # Uncomment home directory line in /etc/defaults/plexmediaserver
-        sed -i 's#.*{HOME}.*#PLEX_MEDIA_SERVER_SUPPORT_DIR="${HOME}/Library/Application Support"#' /etc/default/plexmediaserver
+        sed -i 's#.*{HOME}.*#PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="${HOME}/Library/Application Support"#' /etc/default/plexmediaserver
 
         # Check current database uid.  If different, chown
         DB_ID="$(stat -c "%u" "${PLEX_HOME}/Library")"
