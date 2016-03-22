@@ -109,6 +109,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
             sed -i '/Service/a EnvironmentFile=/etc/default/plexmediaserver' /etc/systemd/system/plexmediaserver.service
             systemctl daemon-reload
         fi
+        sed -i "s#${PLEX_HOME}#${DB_FOLDER}#" /etc/default/plexmediaserver
         usermod -d "${DB_FOLDER}" plex
     fi
 
