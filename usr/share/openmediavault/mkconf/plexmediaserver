@@ -105,9 +105,11 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     if [ ! -d "${DB_FOLDER}/Library" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
         rm -rf "${PLEX_HOME}"
-        sed -i "s#${PLEX_HOME}#${DB_FOLDER}#" /etc/systemd/system/plexmediaserver.service
+        if ! grep "EnvironmentFile" /etc/systemd/system/plexmediaserver.service ; then
+            sed -i '/Service/a EnvironmentFile=/etc/default/plexmediaserver' /etc/systemd/system/plexmediaserver.service
+            systemctl daemon-reload
+        fi
         usermod -d "${DB_FOLDER}" plex
-        systemctl daemon-reload
     fi
 
     # Check current database uid.  If different, chown
