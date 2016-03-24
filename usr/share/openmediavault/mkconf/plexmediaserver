@@ -21,6 +21,7 @@ set -e
 . /usr/share/openmediavault/scripts/helper-functions
 
 SERVICE="plexmediaserver"
+UNIT_OVERRIDE_DIR="/etc/systemd/system/plexmediaserver.service.d"
 
 # Enable/disable Plexpy
 if [ "$(omv_config_get "//services/plexmediaserver/pyenable")" = "1" ]; then
@@ -105,11 +106,15 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     if [ ! -d "${DB_FOLDER}/Library" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
         rm -rf "${PLEX_HOME}"
-        if ! grep "EnvironmentFile" /etc/systemd/system/plexmediaserver.service ; then
-            sed -i '/Service/a EnvironmentFile=/etc/default/plexmediaserver' /etc/systemd/system/plexmediaserver.service
-            systemctl daemon-reload
-        fi
-        sed -i "s#${PLEX_HOME}#${DB_FOLDER}#" /etc/default/plexmediaserver
+
+        # create override directory and file
+        mkdir -p ${UNIT_OVERRIDE_DIR}
+
+        cat <<EOF > ${UNIT_OVERRIDE_DIR}/db_folder.conf
+PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}
+EOF
+
+        systemctl daemon-reload
         usermod -d "${DB_FOLDER}" plex
     fi
 
