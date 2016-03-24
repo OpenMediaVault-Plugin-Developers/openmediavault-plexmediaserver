@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Hyeonkyu Chu <hyeonkyu@gmail.com>, 2014
+# Hyeonkyu Chu <hyeonkyu@gmail.com>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-02 11:56-0600\n"
-"PO-Revision-Date: 2016-01-02 17:56+0000\n"
-"Last-Translator: Aaron Murray <aaronmurray27@gmail.com>\n"
+"PO-Revision-Date: 2016-01-07 10:00+0000\n"
+"Last-Translator: Hyeonkyu Chu <hyeonkyu@gmail.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,7 @@ msgid "Information"
 msgstr "정보"
 
 msgid "Install"
-msgstr ""
+msgstr "설치"
 
 msgid "Plex Media Server"
 msgstr "Plex Media Server"
@@ -50,10 +50,10 @@ msgid "PlexMediaServer"
 msgstr "PlexMediaServer"
 
 msgid "Port"
-msgstr ""
+msgstr "포트"
 
 msgid "Run"
-msgstr ""
+msgstr "실행"
 
 msgid "Select a volume ..."
 msgstr "볼륨 선택 ..."
@@ -71,4 +71,4 @@ msgid "Web Client"
 msgstr "웹 클라이언트"
 
 msgid "Will install/uninstall Plexpy."
-msgstr ""
+msgstr "설치/제거 예정 Plexpy."

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Stefan Thrane Overby <stoverby@gmail.com>, 2013-2014
+# Stefan Thrane Overby <stoverby@gmail.com>, 2013-2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-02 11:56-0600\n"
-"PO-Revision-Date: 2016-01-02 17:56+0000\n"
-"Last-Translator: Aaron Murray <aaronmurray27@gmail.com>\n"
+"PO-Revision-Date: 2016-01-11 22:17+0000\n"
+"Last-Translator: Stefan Thrane Overby <stoverby@gmail.com>\n"
 "Language-Team: Danish (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,7 @@ msgid "Information"
 msgstr "Oplysning"
 
 msgid "Install"
-msgstr ""
+msgstr "Installer"
 
 msgid "Plex Media Server"
 msgstr "Plex Media Server"
@@ -50,10 +50,10 @@ msgid "PlexMediaServer"
 msgstr "PlexMediaServer"
 
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 msgid "Run"
-msgstr ""
+msgstr "Kør"
 
 msgid "Select a volume ..."
 msgstr "Vælg et drev ..."
@@ -71,4 +71,4 @@ msgid "Web Client"
 msgstr "Web Klient"
 
 msgid "Will install/uninstall Plexpy."
-msgstr ""
+msgstr "Vil installer/afinstaller Plexpy."
