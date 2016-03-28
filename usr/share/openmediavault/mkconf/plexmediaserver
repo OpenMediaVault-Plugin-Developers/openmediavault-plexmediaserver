@@ -20,9 +20,6 @@ set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
 
-SERVICE="plexmediaserver"
-UNIT_OVERRIDE_DIR="/etc/systemd/system/plexmediaserver.service.d"
-
 # Enable/disable Plexpy
 if [ "$(omv_config_get "//services/plexmediaserver/pyenable")" = "1" ]; then
     if [ ! -d /opt/plexpy ]; then
@@ -84,10 +81,12 @@ if [ "$(omv_config_get "//services/plexmediaserver/enable")" != "1" ]; then
     exit 0
 fi
 
+SERVICE="plexmediaserver"
 PLEX_HOME="$(getent passwd plex | cut -d: -f6)"
 DB_FOLDER="$(omv_config_get "//services/plexmediaserver/db-folder")"
 DB_MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
 DB_MNTENTDIR=$(xmlstarlet sel -t -m "//system/fstab/mntent[uuid='${DB_MNTENTREF}']" -v dir -b ${OMV_CONFIG_FILE} | xmlstarlet unesc)
+UNIT_OVERRIDE_DIR="/etc/systemd/system/plexmediaserver.service.d"
 
 if ! getent group plex >/dev/null 2>&1; then
     chown -R plex:nogroup "${PLEX_HOME}"
@@ -107,11 +106,15 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
         rm -rf "${PLEX_HOME}"
 
-        # create override directory and file
-        mkdir -p ${UNIT_OVERRIDE_DIR}
+        # create override directory if needed and create/update override file
+        if [ ! d ${UNIT_OVERRIDE_DIR} ]; then
+            mkdir -p ${UNIT_OVERRIDE_DIR}
+        fi
 
         cat <<EOF > ${UNIT_OVERRIDE_DIR}/db_folder.conf
-PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}
+[Service]
+EnvironmentFile=/etc/default/plexmediaserver
+Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}"
 EOF
 
         systemctl daemon-reload
