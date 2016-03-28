@@ -107,7 +107,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         rm -rf "${PLEX_HOME}"
 
         # create override directory if needed and create/update override file
-        if [ ! d ${UNIT_OVERRIDE_DIR} ]; then
+        if [ ! -d ${UNIT_OVERRIDE_DIR} ]; then
             mkdir -p ${UNIT_OVERRIDE_DIR}
         fi
 
