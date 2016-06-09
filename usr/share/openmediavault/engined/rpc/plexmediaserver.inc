@@ -19,154 +19,52 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once("openmediavault/object.inc");
-require_once("openmediavault/config.inc");
-require_once("openmediavault/error.inc");
-require_once("openmediavault/util.inc");
-require_once("openmediavault/rpcservice.inc");
-require_once("openmediavault/notify.inc");
 
-class OMVRpcServicePlexMediaServer extends OMVRpcServiceAbstract
+ class OMVRpcServicePlexMediaServer extends \OMV\Rpc\ServiceAbstract
 {
-    private $serviceName = "plexmediaserver";
-
-    /**
-     * Get the RPC service name.
-     */
     public function getName()
     {
         return "PlexMediaServer";
     }
 
-    private function getEventMessagePath()
-    {
-        return sprintf(
-            "org.openmediavault.services.%s",
-            $this->serviceName
-        );
-    }
-
-    private function getXpath()
-    {
-        return sprintf(
-            "/config/services/%s",
-            $this->serviceName
-        );
-    }
-
-    /**
-     * Initialize the RPC service.
-     */
     public function initialize()
     {
         $this->registerMethod("getSettings");
         $this->registerMethod("setSettings");
     }
 
-    /**
-     * Get the settings configuration object.
-     * @param params The method parameters.
-     * @param context The context of the caller.
-     * @return The requested configuration object.
-     * @throw E_CONFIG_GET_OBJECT_FAILED
-     */
     public function getSettings($params, $context)
     {
-        global $xmlConfig;
-
         // Validate the RPC caller context.
-        $this->validateMethodContext(
-            $context,
-            [ "role" => OMV_ROLE_ADMINISTRATOR ]
-        );
-
+        $this->validateMethodContext($context, ["role" => OMV_ROLE_ADMINISTRATOR]);
         // Get the configuration object.
-        $object = $xmlConfig->get($this->getXpath());
-        if(is_null($object)) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXpath()
-            );
-        }
-        // Modify the result object.
-        $object['enable']   = boolval($object['enable']);
-        $object['showtab']  = boolval($object['showtab']);
-        $object['pyenable'] = boolval($object['pyenable']);
-        $object['pyrun']    = boolval($object['pyrun']);
-        $object["pyport"]   = intval($object["pyport"]);
-
-        return $object;
+        $db = \OMV\Config\Database::getInstance();
+        $object = $db->get("conf.service.plexmediaserver");
+        return $object->getAssoc();
     }
 
-    /**
-     * Set the settings configuration object.
-     * @param params The method parameters.
-     * @param context The context of the caller.
-     * @return The stored configuration object.
-     * @throw E_CONFIG_GET_OBJECT_FAILED
-     * @throw E_CONFIG_SET_OBJECT_FAILED
-     */
     public function setSettings($params, $context)
     {
-        global $xmlConfig;
         // Validate the RPC caller context.
-        $this->validateMethodContext(
-            $context,
-            [ "role" => OMV_ROLE_ADMINISTRATOR ]
-        );
-
+        $this->validateMethodContext($context, ["role" => OMV_ROLE_ADMINISTRATOR]);
         // Validate the parameters of the RPC service method.
-        $this->validateMethodParams($params, '{
-            "type"       : "object",
-            "properties" : {
-                "enable"    : { "type" : "boolean" },
-                "pyenable"  : { "type" : "boolean", "optional" : true },
-                "pyrun"     : { "type" : "boolean", "optional" : true },
-                "db-folder" : { "type" : "string", "optional" : true },
-                "mntentref" : { ' . $GLOBALS['OMV_JSONSCHEMA_UUID_NONE'] . ' },
-                "showtab"   : { "type" : "boolean" },
-                "pyport"    : { "type" : "integer","minimum":1024,"maximum":65535, "optional" : true }
-            }
-        }');
+        $this->validateMethodParams($params, "rpc.plexmediaserver.setsettings");
+        // Get the existing configuration object.
+        $db = \OMV\Config\Database::getInstance();
+        $object = $db->get("conf.service.plexmediaserver");
 
-        $xpath = sprintf("//system/fstab/mntent[uuid='%s']", $params['mntentref']);
-        $deviceDir = $xmlConfig->get($xpath);
-        $deviceDir = $deviceDir['dir'];
-
-        $dbFolder = sprintf("{$deviceDir}/%s", $this->serviceName);
-        $params['db-folder'] = $dbFolder;
-
-        // Prepare configuration data
-        $object = [
-            "enable"    => array_boolval($params, 'enable'),
-            "pyenable"  => array_boolval($params, 'pyenable'),
-            "pyrun"     => array_boolval($params, 'pyrun'),
-            "pyport"    => $params["pyport"],
-            "db-folder" => $params['db-folder'],
-            "mntentref" => $params['mntentref'],
-            "showtab"   => array_boolval($params, 'showtab')
-        ];
-
-        // Set configuration object
-        if (false === $xmlConfig->replace($this->getXpath(), $object)) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED,
-                $this->getXpath()
-            );
+        // Get db-folder from mntentref
+        if ($db->exists("conf.system.filesystem.mountpoint", [
+            "operator" => "stringEquals",
+            "arg0" => "uuid",
+            "arg1" => $params["mntentref"]
+        ])) {
+            $meObject = $db->get("conf.system.filesystem.mountpoint", $params["mntentref"]);
+            $params['db-folder'] = sprintf("%s/plexmediaserver", $meObject->get("dir");
         }
-
-        // Notify configuration changes
-        $dispatcher = &OMVNotifyDispatcher::getInstance();
-        $dispatcher->notify(
-            OMV_NOTIFY_MODIFY,
-            $this->getEventMessagePath(),
-            $object
-        );
-
-        return $object;
+        $object->setAssoc($params);
+        $db->set($object);
+        // Return the configuration object.
+        return $object->getAssoc();
     }
 }
-
-// Register the RPC service.
-$rpcServiceMgr = &OMVRpcServiceMgr::getInstance();
-$rpcServiceMgr->registerService(new OMVRpcServicePlexMediaServer());

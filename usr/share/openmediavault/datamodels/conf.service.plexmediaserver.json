@@ -1,0 +1,41 @@
+{
+	"type": "config",
+	"id": "conf.service.plexmediaserver",
+	"title": "PlexMediaServer",
+	"queryinfo": {
+		"xpath": "//services/plexmediaserver",
+		"iterable": false
+	},
+	"properties": {
+		"enable": {
+			"type": "boolean",
+			"default": 0
+		},
+		"pyenable": {
+			"type": "boolean",
+			"default": 0
+		},
+		"pyrun": {
+			"type": "boolean",
+			"default": 0
+		},
+		"db-folder": {
+			"type": "string",
+			"default": ""
+		},
+		"mntentref": {
+			"type": "string",
+			"default": ""
+		},
+		"showtab": {
+			"type": "boolean",
+			"default": 0
+		},
+		"pyport": {
+			"type": "integer",
+			"minimum": 1024,
+			"maximum": 65535,
+			"default": 8182
+		}
+	}
+}

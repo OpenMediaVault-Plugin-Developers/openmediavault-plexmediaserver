@@ -1,0 +1,35 @@
+{
+	"type": "rpc",
+	"id": "rpc.plexmediaserver.setsettings",
+	"params": {
+		"type": "object",
+		"properties": {
+			"enable": {
+				"type": "boolean",
+				"required": true
+			},
+			"pyenable": {
+				"type": "boolean",
+				"required": false
+			},
+			"pyrun": {
+				"type": "boolean",
+				"required": false
+			},
+			"mntentref": {
+				"type": "string",
+				"required": true
+			},
+			"showtab": {
+				"type": "boolean",
+				"required": true
+			},
+			"pyport": {
+				"type": "integer",
+				"minimum": 1024,
+				"maximum": 65535,
+				"required": false
+			}
+		}
+	}
+}

@@ -9,7 +9,9 @@ Homepage: http://omv-extras.org/
 
 Package: openmediavault-plexmediaserver
 Architecture: all
-Depends: ${misc:Depends}, openmediavault (= 3.0.13), plexmediaserver,
+Depends: openmediavault (>= 3.0.21),
+         plexmediaserver,
+         ${misc:Depends}
  git-core, python
 Description: OpenMediaVault Plex Media Server plugin
  Stream media everywhere(tm)

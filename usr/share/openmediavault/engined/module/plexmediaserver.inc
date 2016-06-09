@@ -20,124 +20,59 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once("openmediavault/config.inc");
-require_once("openmediavault/error.inc");
-require_once("openmediavault/log.inc");
-require_once("openmediavault/module.inc");
-require_once "openmediavault/systemctl.inc";
-require_once "openmediavault/util.inc";
-
-class OMVModulePlexMediaServer extends OMVModuleServiceAbstract
-  implements OMVINotifyListener, OMVIModuleServiceStatus {
-
-    private $serviceName = "plexmediaserver";
-
-    /**
-     * Get the module name.
-     */
+class OMVModulePlexMediaServer extends \OMV\Engine\Module\ServiceAbstract
+    implements \OMV\Engine\Notify\IListener, \OMV\Engine\Module\IServiceStatus
+{
     public function getName()
     {
         return "PlexMediaServer";
     }
 
-    private function getEventMessagePath()
-    {
-        return sprintf(
-            "org.openmediavault.services.%s",
-            $this->serviceName
-        );
-    }
-
-    private function getXpath()
-    {
-        return sprintf(
-            "/config/services/%s",
-            $this->serviceName
-        );
-    }
-
-    /**
-     * Generate the configuration.
-     * @throw E_EXEC_FAILED
-     */
     public function applyConfig()
     {
-        $cmd = sprintf("export LANG=C; omv-mkconf %s 2>&1", $this->serviceName);
-        if (0 !== $this->exec($cmd, $output)) {
-            throw new OMVException(
-                OMVErrorMsg::E_EXEC_FAILED,
-                $cmd,
-                implode(PHP_EOL, $output)
-            );
-        }
+        $cmd = new \OMV\System\Process("omv-mkconf", "plexmediaserver");
+        $cmd->setRedirect2to1(TRUE);
+        $cmd->execute();
     }
 
-    /**
-     * Stop the managed service.
-     */
-    public function stopService()
-    {
-        $systemCtl = new OMVSystemCtl($this->serviceName);
-        $systemCtl->disable(true);
-    }
-
-    /**
-     * Start the managed service.
-     * @throw E_CONFIG_GET_OBJECT_FAILED
-     */
     public function startService()
     {
-        global $xmlConfig;
-
-        $object = $xmlConfig->get($this->getXpath());
-        if(is_null($object)) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXpath()
-            );
-        }
-        if(FALSE === boolval($object['enable'])) {
+        $db = \OMV\Config\Database::getInstance();
+        $object = $db->get("conf.service.plexmediaserver");
+        if (TRUE !== $object->get("enable"))
             return;
-        }
-        $systemCtl = new OMVSystemCtl($this->serviceName);
-        $systemCtl->enable(true);
+        // Start this service and enable the unit file.
+        $systemCtl = new \OMV\System\SystemCtl("plexmediaserver");
+        $systemCtl->enable(TRUE);
     }
 
-    /**
-     * Get the status of the managed service.
-     * @throw E_CONFIG_GET_OBJECT_FAILED
-     */
+    public function stopService()
+    {
+        $systemCtl = new \OMV\System\SystemCtl("plexmediaserver");
+        $systemCtl->disable(TRUE);
+    }
+
     public function getStatus()
     {
-        global $xmlConfig;
-
-        $object = $xmlConfig->get($this->getXpath());
-        if(is_null($object)) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXpath()
-            );
-        }
-        $systemCtl = new OMVSystemCtl($this->serviceName);
-        return [
-            "name"    => $this->getName(),
-            "title"   => gettext("PlexMediaServer"),
-            "enabled" => boolval($object["enable"]),
+        $db = \OMV\Config\Database::getInstance();
+        $object = $db->get("conf.service.plexmediaserver");
+        $systemCtl = new \OMV\System\SystemCtl("plexmediaserver");
+        return array(
+            "name" => $this->getName(),
+            "title" => gettext("PlexMediaServer"),
+            "enabled" => $object->get("enable"),
             "running" => $systemCtl->isActive()
-        ];
+        );
     }
 
     /**
      * Bind listeners.
      */
-    function bindListeners(OMVNotifyDispatcher $dispatcher) {
+    function bindListeners(\OMV\Engine\Notify\Dispatcher $dispatcher)
+    {
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
-            $this->getEventMessagePath(),
-            array($this, "setDirty"));
+            "org.openmediavault.services.plexmediaserver",
+            [$this, "setDirty"]);
     }
 }
-
-// Register module.
-$moduleMgr = &OMVModuleMgr::getInstance();
-$moduleMgr->registerModule(new OMVModulePlexMediaServer());
