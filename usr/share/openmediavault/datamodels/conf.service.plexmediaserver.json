@@ -9,15 +9,15 @@
 	"properties": {
 		"enable": {
 			"type": "boolean",
-			"default": 0
+			"default": false
 		},
 		"pyenable": {
 			"type": "boolean",
-			"default": 0
+			"default": false
 		},
 		"pyrun": {
 			"type": "boolean",
-			"default": 0
+			"default": false
 		},
 		"db-folder": {
 			"type": "string",
@@ -29,7 +29,7 @@
 		},
 		"showtab": {
 			"type": "boolean",
-			"default": 0
+			"default": false
 		},
 		"pyport": {
 			"type": "integer",
