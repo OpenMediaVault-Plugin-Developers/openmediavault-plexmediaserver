@@ -1,8 +1,8 @@
-openmediavault-plexmediaserver (3.3) UNRELEASED; urgency=medium
+openmediavault-plexmediaserver (3.3) stable; urgency=low
 
   * Update for datamodels and auto notification
 
- -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 09 Jun 2016 06:57:44 -0500
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 11 Jun 2016 10:34:50 -0500
 
 openmediavault-plexmediaserver (3.2) stable; urgency=low
 

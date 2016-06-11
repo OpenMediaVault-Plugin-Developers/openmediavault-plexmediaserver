@@ -31,7 +31,7 @@ class OMVModulePlexMediaServer extends \OMV\Engine\Module\ServiceAbstract
     public function applyConfig()
     {
         $cmd = new \OMV\System\Process("omv-mkconf", "plexmediaserver");
-        $cmd->setRedirect2to1(TRUE);
+        $cmd->setRedirect2to1();
         $cmd->execute();
     }
 
@@ -72,7 +72,8 @@ class OMVModulePlexMediaServer extends \OMV\Engine\Module\ServiceAbstract
     {
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
-            "org.openmediavault.services.plexmediaserver",
-            [$this, "setDirty"]);
+            "org.openmediavault.conf.service.plexmediaserver",
+            [ $this, "setDirty" ]
+        );
     }
 }

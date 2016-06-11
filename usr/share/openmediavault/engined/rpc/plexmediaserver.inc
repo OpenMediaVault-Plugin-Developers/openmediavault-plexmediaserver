@@ -60,7 +60,7 @@
             "arg1" => $params["mntentref"]
         ])) {
             $meObject = $db->get("conf.system.filesystem.mountpoint", $params["mntentref"]);
-            $params['db-folder'] = sprintf("%s/plexmediaserver", $meObject->get("dir");
+            $params['db-folder'] = sprintf("%s/plexmediaserver", $meObject->get("dir"));
         }
         $object->setAssoc($params);
         $db->set($object);
