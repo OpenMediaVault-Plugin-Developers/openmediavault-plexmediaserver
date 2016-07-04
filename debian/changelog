@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (3.4) stable; urgency=medium
+
+  * Add changes for codecs 
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 04 Jul 2016 08:19:46 -0400
+
 openmediavault-plexmediaserver (3.3) stable; urgency=low
 
   * Update for datamodels and auto notification
