@@ -31,7 +31,11 @@ case "$1" in
 	purge)
 		# Remove the configuration data
 		omv_config_delete "/config/services/plexmediaserver"
-
+	
+	if [ -d /opt/plexcodecs ]; then
+		rm -rf /opt/plexcodecs >/dev/null 2>&1
+	fi
+	
         if [ -d /opt/plexpy ]; then
             deb-systemd-helper disable plexpy >/dev/null || true
             deb-systemd-invoke stop plexpy >/dev/null || true
