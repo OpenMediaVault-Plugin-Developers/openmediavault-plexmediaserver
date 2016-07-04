@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (1.0.15) stable; urgency=medium
+
+  * Add changes for codecs 
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 04 Jul 2016 08:26:19 -0400
+
 openmediavault-plexmediaserver (1.0.14) stable; urgency=low
 
   * Add requirment for python
