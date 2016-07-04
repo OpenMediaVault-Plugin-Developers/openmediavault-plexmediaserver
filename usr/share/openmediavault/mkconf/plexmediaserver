@@ -87,11 +87,24 @@ DB_FOLDER="$(omv_config_get "//services/plexmediaserver/db-folder")"
 DB_MNTENTREF="$(omv_config_get "//services/plexmediaserver/mntentref")"
 DB_MNTENTDIR=$(xmlstarlet sel -t -m "//system/fstab/mntent[uuid='${DB_MNTENTREF}']" -v dir -b ${OMV_CONFIG_FILE} | xmlstarlet unesc)
 UNIT_OVERRIDE_DIR="/etc/systemd/system/plexmediaserver.service.d"
+PLEX_CODECS="/opt/plexcodecs"
+CODECS="${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
 
 if ! getent group plex >/dev/null 2>&1; then
     chown -R plex:nogroup "${PLEX_HOME}"
 else
     chown -R plex:plex "${PLEX_HOME}"
+fi
+
+if [ ! -d "${PLEX_CODECS}" ]; then
+    killall -u plex || :
+    mkdir -p "${PLEX_CODECS}"
+    chown -R plex:plex "${PLEX_CODECS}"
+    chmod 755 "${PLEX_CODECS}"
+    cp -rfp "${CODECS}" "${PLEX_CODECS}"
+    rm -rf "${CODECS}"
+    ln -s "${PLEX_CODECS}/Codecs" "${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
+    deb-systemd-invoke start ${SERVICE}.service >/dev/null || true
 fi
 
 if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
