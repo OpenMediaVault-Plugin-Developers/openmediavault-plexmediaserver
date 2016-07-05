@@ -127,7 +127,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         cat <<EOF > ${UNIT_OVERRIDE_DIR}/db_folder.conf
 [Service]
 EnvironmentFile=/etc/default/plexmediaserver
-Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}"
+Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}/Library/Application Support"
 EOF
 
         systemctl daemon-reload
