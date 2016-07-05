@@ -152,4 +152,5 @@ fi
 # created for plex uninstall because it fails if it can't remove this directory.
 if [ ! -d "/var/lib/plexmediaserver" ]; then
     mkdir -p /var/lib/plexmediaserver
+    chmod 755 /var/lib/plexmediaserver
 fi
