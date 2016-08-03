@@ -89,7 +89,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Information", {
                         'This will normally only have to be done by Plex Pass members upgrading to the latest packages.' +
                         '<ol>' +
                         '<li>' +
-                        'Command line: <b>/etc/init.d/plexmediaserver stop</b>' +
+                        'Command line: <b>systemctl stop plexmediaserver</b>' +
                         '</li>' +
                         '<li>' +
                         'Command line: <b>cd /var/cache/apt/archives</b>' +
@@ -113,7 +113,7 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Information", {
                         'Now install the package while still in archives directory:  <b>dpkg -i plex(hit TAB and then ENTER)</b>' +
                         '</li>' +
                         '<li>' +
-                        'After installation start PlexMediaServer: <b>/etc/init.d/plexmediaserver start</b>' +
+                        'After installation start PlexMediaServer: <b>systemctl start plexmediaserver</b>' +
                         '</li>' +
                         '</ol>' 
             }]
