@@ -12,7 +12,7 @@ Architecture: all
 Depends: openmediavault (>= 3.0.21),
          plexmediaserver,
          ${misc:Depends}
- git-core, python
+ git-core, python, avahi-utils
 Description: OpenMediaVault Plex Media Server plugin
  Stream media everywhere(tm)
  .
