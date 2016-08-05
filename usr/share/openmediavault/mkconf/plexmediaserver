@@ -90,6 +90,10 @@ UNIT_OVERRIDE_DIR="/etc/systemd/system/plexmediaserver.service.d"
 PLEX_CODECS="/opt/plexcodecs"
 CODECS="${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
 
+if [ -f /etc/default/plexmediaserver.prev ]; then
+    mv /etc/default/plexmediaserver.prev /etc/default/plexmediaserver
+fi
+
 if ! getent group plex >/dev/null 2>&1; then
     chown -R plex:nogroup "${PLEX_HOME}"
 else
