@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (3.6) stable; urgency=medium
+
+  * Fix default file name 
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 04 Aug 2016 22:53:58 -0400
+
 openmediavault-plexmediaserver (3.5) stable; urgency=medium
 
   * Fixed unit override file and unit override folder removal on uninstall
