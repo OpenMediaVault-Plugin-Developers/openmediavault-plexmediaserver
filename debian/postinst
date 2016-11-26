@@ -32,7 +32,7 @@ case "$1" in
 
         PLEX_HOME="$(getent passwd plex | cut -d: -f6)"
         USER_ID="$(getent passwd plex | cut -d: -f3)"
-        
+
         # Check current database uid.  If different, chown
         DB_ID="$(stat -c "%u" "${PLEX_HOME}/Library")"
         if [ "${DB_ID}" != "${USER_ID}" ]; then
@@ -64,13 +64,13 @@ case "$1" in
 
         echo "Initialize configuration"
         omv_config_add_node "/config/services" "${SERVICE_XPATH_NAME}"
-        omv_config_add_node "${SERVICE_XPATH}" "enable" "${ENABLE}"
-        omv_config_add_node "${SERVICE_XPATH}" "db-folder" "${PLEX_HOME}"
-        omv_config_add_node "${SERVICE_XPATH}" "mntentref" "${MNTENTREF}"
-        omv_config_add_node "${SERVICE_XPATH}" "showtab" "${SHOWTAB}"
-        omv_config_add_node "${SERVICE_XPATH}" "pyenable" "${PYENABLE}"
-        omv_config_add_node "${SERVICE_XPATH}" "pyrun" "${PYRUN}"
-        omv_config_add_node "${SERVICE_XPATH}" "pyport" "${PYPORT}"
+        omv_config_add_key "${SERVICE_XPATH}" "enable" "${ENABLE}"
+        omv_config_add_key "${SERVICE_XPATH}" "db-folder" "${PLEX_HOME}"
+        omv_config_add_key "${SERVICE_XPATH}" "mntentref" "${MNTENTREF}"
+        omv_config_add_key "${SERVICE_XPATH}" "showtab" "${SHOWTAB}"
+        omv_config_add_key "${SERVICE_XPATH}" "pyenable" "${PYENABLE}"
+        omv_config_add_key "${SERVICE_XPATH}" "pyrun" "${PYRUN}"
+        omv_config_add_key "${SERVICE_XPATH}" "pyport" "${PYPORT}"
 
         dpkg-trigger update-fixperms
         dpkg-trigger update-locale
