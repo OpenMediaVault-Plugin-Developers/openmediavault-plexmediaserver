@@ -10,7 +10,7 @@ Homepage: http://omv-extras.org/
 Package: openmediavault-plexmediaserver
 Architecture: all
 Depends: openmediavault (>= 3.0.21),
-         plexmediaserver,
+         plexmediaserver | plexmediaserver-installer,
          ${misc:Depends},
          avahi-utils,
          avahi-daemon,

@@ -63,14 +63,14 @@ case "$1" in
         omv_config_delete "${SERVICE_XPATH}"
 
         echo "Initialize configuration"
-        object="<enable>${ENABLE}</enable>"
-        object="${object}<db-folder>${PLEX_HOME}</db-folder>"
-        object="${object}<mntentref>${MNTENTREF}</mntentref>"
-        object="${object}<showtab>${SHOWTAB}</showtab>"
-        object="${object}<pyenable>${PYENABLE}</pyenable>"
-        object="${object}<pyrun>${PYRUN}</pyrun>"
-        object="${object}<pyport>${PYPORT}</pyport>"
-        omv_config_add_element "/config/services" "${SERVICE_XPATH_NAME}" "${object}" true
+        omv_config_add_node "/config/services" "${SERVICE_XPATH_NAME}"
+        omv_config_add_node "${SERVICE_XPATH}" "enable" "${ENABLE}"
+        omv_config_add_node "${SERVICE_XPATH}" "db-folder" "${PLEX_HOME}"
+        omv_config_add_node "${SERVICE_XPATH}" "mntentref" "${MNTENTREF}"
+        omv_config_add_node "${SERVICE_XPATH}" "showtab" "${SHOWTAB}"
+        omv_config_add_node "${SERVICE_XPATH}" "pyenable" "${PYENABLE}"
+        omv_config_add_node "${SERVICE_XPATH}" "pyrun" "${PYRUN}"
+        omv_config_add_node "${SERVICE_XPATH}" "pyport" "${PYPORT}"
 
         dpkg-trigger update-fixperms
         dpkg-trigger update-locale
