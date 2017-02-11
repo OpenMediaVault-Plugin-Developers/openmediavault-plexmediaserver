@@ -107,7 +107,6 @@ EnvironmentFile=/etc/default/plexmediaserver
 Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}/Library/Application Support"
 EOF
     chmod 664 ${UNIT_OVERRIDE_DIR}/db_folder.conf
-    usermod -d "${DB_FOLDER}" plex
     systemctl daemon-reload
 }
 
@@ -136,6 +135,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
         rm -rf "${PLEX_HOME}"
         createoverride
+        usermod -d "${DB_FOLDER}" plex
     fi
 
     # Check current database uid.  If different, chown
