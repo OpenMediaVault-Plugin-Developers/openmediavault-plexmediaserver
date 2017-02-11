@@ -1,3 +1,9 @@
+openmediavault-plexmediaserver (3.8) stable; urgency=low
+
+  * Always create unit override file
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 11 Feb 2017 06:32:50 -0600
+
 openmediavault-plexmediaserver (3.7) stable; urgency=low
 
   * Change dependencies for armhf plexmediaserver package

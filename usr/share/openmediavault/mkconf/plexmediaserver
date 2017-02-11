@@ -94,6 +94,23 @@ if [ -f /etc/default/plexmediaserver.prev ]; then
     mv /etc/default/plexmediaserver.prev /etc/default/plexmediaserver
 fi
 
+createoverride()
+{
+    # create override directory if needed and create/update override file
+    if [ ! -d ${UNIT_OVERRIDE_DIR} ]; then
+        mkdir -p ${UNIT_OVERRIDE_DIR}
+    fi
+
+    cat <<EOF > ${UNIT_OVERRIDE_DIR}/db_folder.conf
+[Service]
+EnvironmentFile=/etc/default/plexmediaserver
+Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}/Library/Application Support"
+EOF
+    chmod 664 ${UNIT_OVERRIDE_DIR}/db_folder.conf
+    usermod -d "${DB_FOLDER}" plex
+    systemctl daemon-reload
+}
+
 chown -R plex:nogroup "${PLEX_HOME}"
 
 if [ ! -d "${PLEX_CODECS}" ]; then
@@ -118,20 +135,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     if [ ! -d "${DB_FOLDER}/Library" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
         rm -rf "${PLEX_HOME}"
-
-        # create override directory if needed and create/update override file
-        if [ ! -d ${UNIT_OVERRIDE_DIR} ]; then
-            mkdir -p ${UNIT_OVERRIDE_DIR}
-        fi
-
-        cat <<EOF > ${UNIT_OVERRIDE_DIR}/db_folder.conf
-[Service]
-EnvironmentFile=/etc/default/plexmediaserver
-Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=${DB_FOLDER}/Library/Application Support"
-EOF
-        chmod 664 ${UNIT_OVERRIDE_DIR}/db_folder.conf
-        usermod -d "${DB_FOLDER}" plex
-        systemctl daemon-reload
+        createoverride
     fi
 
     # Check current database uid.  If different, chown
@@ -143,6 +147,8 @@ EOF
     fi
 
     deb-systemd-invoke start ${SERVICE}.service >/dev/null || true
+else
+    createoverride
 fi
 
 # created for plex uninstall because it fails if it can't remove this directory.
