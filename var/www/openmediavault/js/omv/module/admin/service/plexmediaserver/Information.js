@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2017 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,37 +83,6 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Information", {
                         '</li>' +
                         '<li>' +
                         'The 1st post contains links to the latest Debian 32 bit and 64 bit package of Plex Media Server.  Download the appropriate package for your machine.' +
-                        '</li>' +
-                        '</ol>' +
-                        '<h3>Upgrading Plex Media Server Manually</h3>' +
-                        'This will normally only have to be done by Plex Pass members upgrading to the latest packages.' +
-                        '<ol>' +
-                        '<li>' +
-                        'Command line: <b>systemctl stop plexmediaserver</b>' +
-                        '</li>' +
-                        '<li>' +
-                        'Command line: <b>cd /var/cache/apt/archives</b>' +
-                        '</li>' +
-                        '<li>' +
-                        'Command line: <b>rm plex*.deb</b>' +
-                        '</li>' +
-                        '<li>' +
-                        'Now move the new package to this location <b>/var/cache/apt/archives</b>.  While in the archives directory the best method is to use "<b>wget downloadlink</b>" from Plex forums.' +
-                        '</li>' +
-                        '<li>' +
-                        'While on the post in the Plex forum where the package links are located right click on the 32 or 64 bit link.  Then click on "<b>Copy link address</b>".' +
-                        '</li>' +
-                        '<li>' +
-                        'In a Putty root session to your OMV: <b>cd /var/cache/apt/archives</b>' +
-                        '</li>' +
-                        '<li>' +
-                        'Still in root session: <b>wget(type a space after the wget then right click and paste the link.  Hit ENTER and the package will download directly to this location.</b>)' +
-                        '</li>' +
-                        '<li>' +
-                        'Now install the package while still in archives directory:  <b>dpkg -i plex(hit TAB and then ENTER)</b>' +
-                        '</li>' +
-                        '<li>' +
-                        'After installation start PlexMediaServer: <b>systemctl start plexmediaserver</b>' +
                         '</li>' +
                         '</ol>' 
             }]
