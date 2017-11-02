@@ -1,15 +1,15 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the openmediavault-plexmediaserver package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2015-2016
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-02 11:56-0600\n"
-"PO-Revision-Date: 2016-01-16 21:51+0000\n"
+"POT-Creation-Date: 2017-11-02 07:50-0500\n"
+"PO-Revision-Date: 2017-09-23 20:29+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -71,4 +71,4 @@ msgid "Web Client"
 msgstr "Webový klient"
 
 msgid "Will install/uninstall Plexpy."
-msgstr "Nainstaluje/odinstaluje Plexpy."
+msgstr "Nainstaluje/odinstaluje dohledovací nástroj Plexpy."

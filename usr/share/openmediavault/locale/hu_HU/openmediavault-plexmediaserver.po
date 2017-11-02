@@ -1,15 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the openmediavault-plexmediaserver package.
 # 
 # Translators:
+# Gyuris Gellért <gellert.gyuris@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-02 11:56-0600\n"
-"PO-Revision-Date: 2016-01-02 17:56+0000\n"
-"Last-Translator: Aaron Murray <aaronmurray27@gmail.com>\n"
+"POT-Creation-Date: 2017-11-02 07:50-0500\n"
+"PO-Revision-Date: 2017-09-21 14:00+0000\n"
+"Last-Translator: Gyuris Gellért <gellert.gyuris@gmail.com>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,56 +19,56 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Database Folder"
-msgstr ""
+msgstr "Adatbázis-mappa"
 
 msgid "Database Volume"
-msgstr ""
+msgstr "Adatbázis-kötet"
 
 msgid ""
 "Database files will move to new location if database volume is changed."
-msgstr ""
+msgstr "Az adatbázisfájlok át lesznek helyezve az új helyre, ha az adatbázis-kötet megváltozik."
 
 msgid "Enable"
-msgstr ""
+msgstr "Engedélyezés"
 
 msgid "General settings"
-msgstr ""
+msgstr "Általános beállítások"
 
 msgid "Information"
-msgstr ""
+msgstr "Információ"
 
 msgid "Install"
-msgstr ""
+msgstr "Telepítés"
 
 msgid "Plex Media Server"
-msgstr ""
+msgstr "Plex média-kiszolgáló"
 
 msgid "Plex Web Client"
-msgstr ""
+msgstr "Plex webkliens"
 
 msgid "PlexMediaServer"
-msgstr ""
+msgstr "PlexMediaServer"
 
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 msgid "Run"
-msgstr ""
+msgstr "Futtatás"
 
 msgid "Select a volume ..."
-msgstr ""
+msgstr "Kötet kijelölése…"
 
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 msgid "Setup Info"
-msgstr ""
+msgstr "Telepítési információ"
 
 msgid "Show tab containing Web Client frame."
-msgstr ""
+msgstr "Webkliens keretének megjelenítése a fülön "
 
 msgid "Web Client"
-msgstr ""
+msgstr "Webkliens"
 
 msgid "Will install/uninstall Plexpy."
-msgstr ""
+msgstr "Plexpy telepítése vagy törlése"

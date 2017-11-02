@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (C) 2013-2016 OpenMediaVault Plugin Developers
+# Copyright (C) 2013-2017 OpenMediaVault Plugin Developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,9 +23,10 @@ set -e
 # Enable/disable Plexpy
 if [ "$(omv_config_get "//services/plexmediaserver/pyenable")" = "1" ]; then
     if [ ! -d /opt/plexpy ]; then
-        git clone https://github.com/drzoidberg33/plexpy.git /opt/plexpy
-        chmod +x /opt/plexpy/init-scripts/init.ubuntu
-        ln -s /opt/plexpy/init-scripts/init.ubuntu /etc/init.d/plexpy
+        git clone https://github.com/JonnyWong16/plexpy.git /opt/plexpy
+        chmod +x /opt/plexpy/init-scripts/init.systemd
+        cp -f /opt/plexpy/init-scripts/init.systemd /lib/systemd/system/plexpy.service
+        systemctl daemon-reload
         chown -R plex:nogroup /opt/plexpy
     fi
 
@@ -60,19 +61,20 @@ SSD_OPTS=
 HP_PORT="${HP_PORT} "
 
 EOF
-        deb-systemd-helper enable plexpy.service >/dev/null || true
-        deb-systemd-invoke restart plexpy.service >/dev/null || true
+        systemctl enable plexpy.service || true
+        systemctl restart plexpy.service || true
     else
-        deb-systemd-helper disable plexpy.service >/dev/null || true
-        deb-systemd-invoke stop plexpy.service >/dev/null || true
+        systemctl disable plexpy.service || true
+        systemctl stop plexpy.service || true
     fi
 else
     if [ -d /opt/plexpy ]; then
-        deb-systemd-helper disable plexpy.service >/dev/null || true
-        deb-systemd-invoke stop plexpy.service >/dev/null || true
-        rm -f /etc/default/plexpy >/dev/null 2>&1
-        rm -Rf /opt/plexpy >/dev/null 2>&1
-        rm -f /etc/init.d/plexpy >/dev/null 2>&1
+        systemctl disable plexpy.service || true
+        systemctl stop plexpy.service || true
+        rm -f /etc/default/plexpy
+        rm -rf /opt/plexpy
+        rm -f /lib/systemd/system/plexpy.service
+        systemctl daemon-reload
     fi
 fi
 
@@ -120,7 +122,7 @@ if [ ! -d "${PLEX_CODECS}" ]; then
     cp -rfp "${CODECS}" "${PLEX_CODECS}"
     rm -rf "${CODECS}"
     ln -s "${PLEX_CODECS}/Codecs" "${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
-    deb-systemd-invoke start ${SERVICE}.service >/dev/null || true
+    systemctl start ${SERVICE}.service >/dev/null || true
 fi
 
 if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
@@ -128,7 +130,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         exit 1
     fi
 
-    deb-systemd-invoke stop ${SERVICE}.service >/dev/null || true
+    systemctl stop ${SERVICE}.service >/dev/null || true
     killall -u plex || :
 
     if [ ! -d "${DB_FOLDER}/Library" ]; then
@@ -146,7 +148,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         chown -R plex:nogroup "${DB_FOLDER}"
     fi
 
-    deb-systemd-invoke start ${SERVICE}.service >/dev/null || true
+    systemctl start ${SERVICE}.service >/dev/null || true
 else
     createoverride
 fi

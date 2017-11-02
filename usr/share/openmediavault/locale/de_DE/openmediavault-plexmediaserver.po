@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the openmediavault-plexmediaserver package.
 # 
 # Translators:
 # David Hönel <davidh1990@gmx.de>, 2013
@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-02 11:56-0600\n"
-"PO-Revision-Date: 2016-02-02 06:57+0000\n"
+"POT-Creation-Date: 2017-11-02 07:50-0500\n"
+"PO-Revision-Date: 2017-09-19 20:48+0000\n"
 "Last-Translator: WastlJ\n"
 "Language-Team: German (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/de/)\n"
 "MIME-Version: 1.0\n"

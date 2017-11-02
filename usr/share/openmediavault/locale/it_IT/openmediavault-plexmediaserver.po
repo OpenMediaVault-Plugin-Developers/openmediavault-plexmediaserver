@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the openmediavault-plexmediaserver package.
 # 
 # Translators:
 # Damtux, 2013
-# Paolo Velati <paolo.velati@gmail.com>, 2014
+# Paolo Velati <paolo.velati@gmail.com>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-02 11:56-0600\n"
-"PO-Revision-Date: 2016-01-02 17:56+0000\n"
-"Last-Translator: Aaron Murray <aaronmurray27@gmail.com>\n"
+"POT-Creation-Date: 2017-11-02 07:50-0500\n"
+"PO-Revision-Date: 2017-09-19 22:18+0000\n"
+"Last-Translator: Paolo Velati <paolo.velati@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgid "Information"
 msgstr "Informazioni"
 
 msgid "Install"
-msgstr ""
+msgstr "Installa"
 
 msgid "Plex Media Server"
 msgstr "Plex Media Server"
@@ -51,10 +51,10 @@ msgid "PlexMediaServer"
 msgstr "PlexMediaServer"
 
 msgid "Port"
-msgstr ""
+msgstr "Porta"
 
 msgid "Run"
-msgstr ""
+msgstr "Esegui"
 
 msgid "Select a volume ..."
 msgstr "Seleziona un volume ..."
@@ -72,4 +72,4 @@ msgid "Web Client"
 msgstr "Client Web"
 
 msgid "Will install/uninstall Plexpy."
-msgstr ""
+msgstr "Installerà/Disinstallerà Plexpy"

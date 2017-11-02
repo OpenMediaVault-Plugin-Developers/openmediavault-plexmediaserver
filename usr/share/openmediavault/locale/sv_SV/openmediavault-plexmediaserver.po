@@ -3,72 +3,71 @@
 # This file is distributed under the same license as the openmediavault-plexmediaserver package.
 # 
 # Translators:
-# kochin <kochinc@outlook.com>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-plexmediaserver\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-02 07:50-0500\n"
-"PO-Revision-Date: 2017-09-21 14:00+0000\n"
-"Last-Translator: kochin <kochinc@outlook.com>\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/zh_TW/)\n"
+"PO-Revision-Date: 2013-10-28 14:57+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Swedish (http://www.transifex.com/openmediavault-plugin-developers/openmediavault-plexmediaserver/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_TW\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Database Folder"
-msgstr "資料庫檔案夾"
+msgstr ""
 
 msgid "Database Volume"
-msgstr "資料庫磁碟"
+msgstr ""
 
 msgid ""
 "Database files will move to new location if database volume is changed."
-msgstr "資料庫檔案將會被移到新的位置，如果資料庫磁碟被改變。"
+msgstr ""
 
 msgid "Enable"
-msgstr "啟用"
+msgstr ""
 
 msgid "General settings"
-msgstr "一般設定"
+msgstr ""
 
 msgid "Information"
-msgstr "資訊"
+msgstr ""
 
 msgid "Install"
-msgstr "安裝"
+msgstr ""
 
 msgid "Plex Media Server"
-msgstr "Plex Media 伺服器"
+msgstr ""
 
 msgid "Plex Web Client"
-msgstr "Plex 網站客戶端"
+msgstr ""
 
 msgid "PlexMediaServer"
-msgstr "PlexMediaServer"
+msgstr ""
 
 msgid "Port"
-msgstr "通訊埠"
+msgstr ""
 
 msgid "Run"
-msgstr "執行"
+msgstr ""
 
 msgid "Select a volume ..."
-msgstr "選擇一個磁碟 ..."
+msgstr ""
 
 msgid "Settings"
-msgstr "設定"
+msgstr ""
 
 msgid "Setup Info"
-msgstr "設定資訊"
+msgstr ""
 
 msgid "Show tab containing Web Client frame."
-msgstr "顯示含有網站客戶端瀏覽框的分頁。"
+msgstr ""
 
 msgid "Web Client"
-msgstr "網站客戶端"
+msgstr ""
 
 msgid "Will install/uninstall Plexpy."
-msgstr "將安裝/去除 Plexpy。"
+msgstr ""
