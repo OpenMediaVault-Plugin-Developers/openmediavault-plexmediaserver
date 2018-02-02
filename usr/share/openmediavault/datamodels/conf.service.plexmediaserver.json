@@ -30,12 +30,6 @@
 		"showtab": {
 			"type": "boolean",
 			"default": false
-		},
-		"pyport": {
-			"type": "integer",
-			"minimum": 1024,
-			"maximum": 65535,
-			"default": 8182
 		}
 	}
 }
