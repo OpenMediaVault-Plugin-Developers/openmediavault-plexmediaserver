@@ -52,7 +52,7 @@ case "$1" in
 
         # Migration
         if omv_config_exists "${SERVICE_XPATH}/pyport"; then
-            omv_config_del_key "${SERVICE_XPATH}/pyport"
+            omv_config_delete "${SERVICE_XPATH}/pyport"
         fi
         
         if omv_config_exists "${SERVICE_XPATH}/pyport"; then
