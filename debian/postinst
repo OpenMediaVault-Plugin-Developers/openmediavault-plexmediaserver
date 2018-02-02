@@ -50,12 +50,7 @@ case "$1" in
             SHOWTAB="0"
         fi
 
-        # Migration
-        if omv_config_exists "${SERVICE_XPATH}/pyport"; then
-            omv_config_delete "${SERVICE_XPATH}/pyport"
-        fi
-        
-        if omv_config_exists "${SERVICE_XPATH}/pyport"; then
+        if omv_config_exists "${SERVICE_XPATH}/pyenable"; then
             PYENABLE="$(omv_config_get "${SERVICE_XPATH}/pyenable")"
             PYRUN="$(omv_config_get "${SERVICE_XPATH}/pyrun")"
         else
