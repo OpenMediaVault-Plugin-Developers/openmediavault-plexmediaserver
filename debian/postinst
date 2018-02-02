@@ -50,14 +50,17 @@ case "$1" in
             SHOWTAB="0"
         fi
 
+        # Migration
+        if omv_config_exists "${SERVICE_XPATH}/pyport"; then
+            omv_config_del_key "${SERVICE_XPATH}/pyport"
+        fi
+        
         if omv_config_exists "${SERVICE_XPATH}/pyport"; then
             PYENABLE="$(omv_config_get "${SERVICE_XPATH}/pyenable")"
             PYRUN="$(omv_config_get "${SERVICE_XPATH}/pyrun")"
-            PYPORT="$(omv_config_get "${SERVICE_XPATH}/pyport")"
         else
             PYENABLE="0"
             PYRUN="0"
-            PYPORT="8182"
         fi
 
         omv_config_delete "${SERVICE_XPATH}"
@@ -70,7 +73,6 @@ case "$1" in
         omv_config_add_key "${SERVICE_XPATH}" "showtab" "${SHOWTAB}"
         omv_config_add_key "${SERVICE_XPATH}" "pyenable" "${PYENABLE}"
         omv_config_add_key "${SERVICE_XPATH}" "pyrun" "${PYRUN}"
-        omv_config_add_key "${SERVICE_XPATH}" "pyport" "${PYPORT}"
 
         dpkg-trigger update-fixperms
         dpkg-trigger update-locale
