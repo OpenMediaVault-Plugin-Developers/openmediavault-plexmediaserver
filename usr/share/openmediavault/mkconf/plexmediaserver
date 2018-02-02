@@ -28,6 +28,12 @@ if [ "$(omv_config_get "//services/plexmediaserver/pyenable")" = "1" ]; then
         chown -R plexpy:nogroup /opt/plexpy
         cp -f /opt/plexpy/init-scripts/init.systemd /lib/systemd/system/plexpy.service
         systemctl daemon-reload
+    else
+        # Migration
+        if [ $(stat -c "%U" /opt/plexpy/) != "plexpy" ]; then
+            adduser --system --no-create-home plexpy
+            chown -R plexpy:nogroup /opt/plexpy
+        fi
     fi
 
     # Configure
