@@ -61,7 +61,6 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
         },{
             name       : [
                 "pyrun",
-                "pyport",
             ],
             conditions : [
                 { name  : "pyenable", value : true }
@@ -188,16 +187,6 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
                 name       : "pyrun",
                 fieldLabel : _("Run"),
                 checked    : false
-            }, {
-                xtype: "numberfield",
-                name: "pyport",
-                fieldLabel: _("Port"),
-                vtype: "port",
-                minValue: 1024,
-                maxValue: 65535,
-                allowDecimals: false,
-                allowBlank: true,
-                value: 8182
             }]
         }];
     },

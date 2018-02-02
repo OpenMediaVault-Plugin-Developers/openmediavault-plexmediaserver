@@ -84,7 +84,9 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Information", {
                         '<li>' +
                         'The 1st post contains links to the latest Debian 32 bit and 64 bit package of Plex Media Server.  Download the appropriate package for your machine.' +
                         '</li>' +
-                        '</ol>' 
+                        '</ol>' +
+                        '<h3>PlexPy</h3>' +
+                        'By default, PlexPy runs on port <b>TCP 8181</b>; it can be changed in the application.'
             }]
         }];
     }

@@ -24,43 +24,20 @@ set -e
 if [ "$(omv_config_get "//services/plexmediaserver/pyenable")" = "1" ]; then
     if [ ! -d /opt/plexpy ]; then
         git clone https://github.com/JonnyWong16/plexpy.git /opt/plexpy
-        chmod +x /opt/plexpy/init-scripts/init.systemd
+        adduser --system --no-create-home plexpy
+        chown -R plexpy:nogroup /opt/plexpy
         cp -f /opt/plexpy/init-scripts/init.systemd /lib/systemd/system/plexpy.service
         systemctl daemon-reload
-        chown -R plex:nogroup /opt/plexpy
+    else
+        # Migration
+        if [ $(stat -c "%U" /opt/plexpy/) != "plexpy" ]; then
+            adduser --system --no-create-home plexpy
+            chown -R plexpy:nogroup /opt/plexpy
+        fi
     fi
 
     # Configure
     if [ "$(omv_config_get "//services/plexmediaserver/pyrun")" = "1" ]; then
-        # Create defaults
-        HP_PORT="$(omv_config_get "//services/plexmediaserver/pyport")"
-        cat <<EOF > /etc/default/plexpy
-## The defaults
-# Run as username
-HP_USER=plex
-
-# Path to app HP_HOME=path_to_app_PlexPy.py
-HP_HOME=/opt/plexpy
-
-# Data directory where plexpy.db, cache and logs are stored
-HP_DATA=/opt/plexpy
-
-# Path to store PID file
-HP_PIDFILE=/var/run/plexpy/plexpy.pid
-
-# Path to python bin
-PYTHON_BIN=/usr/bin/python
-
-# Extra daemon option like: HP_OPTS=" --config=/opt/plexpy/config.ini"
-HP_OPTS=" --config=/opt/plexpy/config.ini"
-
-# Extra start-stop-daemon option like START_OPTS=" --group=users"
-SSD_OPTS=
-
-# Hardcoded port to run on, overrides config.ini settings
-HP_PORT="${HP_PORT} "
-
-EOF
         systemctl enable plexpy.service || true
         systemctl restart plexpy.service || true
     else
@@ -71,10 +48,10 @@ else
     if [ -d /opt/plexpy ]; then
         systemctl disable plexpy.service || true
         systemctl stop plexpy.service || true
-        rm -f /etc/default/plexpy
-        rm -rf /opt/plexpy
         rm -f /lib/systemd/system/plexpy.service
         systemctl daemon-reload
+        rm -rf /opt/plexpy
+        deluser --system plexpy
     fi
 fi
 
