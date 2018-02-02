@@ -61,7 +61,6 @@ Ext.define("OMV.module.admin.service.plexmediaserver.Settings", {
         },{
             name       : [
                 "pyrun",
-                "pyport",
             ],
             conditions : [
                 { name  : "pyenable", value : true }
