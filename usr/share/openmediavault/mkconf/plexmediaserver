@@ -135,7 +135,9 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
 
     if [ ! -d "${DB_FOLDER}/Library" ]; then
         cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
-        rm -rf "${PLEX_HOME}"
+        if [ -d "${PLEX_HOME}" ]; then
+            rm -rf "${PLEX_HOME}"
+        fi
         createoverride
         usermod -d "${DB_FOLDER}" plex
     fi
