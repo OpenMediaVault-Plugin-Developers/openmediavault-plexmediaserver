@@ -122,8 +122,8 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     killall -u plex || :
 
     # always copy - if the directory exists somehow, nothing gets updated
-    cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
     if [ -d "${PLEX_HOME}" ]; then
+        cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
         rm -rf "${PLEX_HOME}"
     fi
     usermod -d "${DB_FOLDER}" plex
