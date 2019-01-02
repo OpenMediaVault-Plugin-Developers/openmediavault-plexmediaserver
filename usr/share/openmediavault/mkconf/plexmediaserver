@@ -117,6 +117,7 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         exit 1
     fi
 
+    echo "Changing database location. Moving large database locations can take a long time."
     systemctl stop ${SERVICE}.service >/dev/null || true
     killall -u plex || :
 
@@ -125,17 +126,21 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     if [ -d "${PLEX_HOME}" ]; then
         rm -rf "${PLEX_HOME}"
     fi
-    createoverride
     usermod -d "${DB_FOLDER}" plex
     PLEX_HOME="${DB_FOLDER}"
     CODECS="${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
-else
-    createoverride
 fi
 
-chown -R plex:nogroup "${PLEX_HOME}"
+# Check current database uid.  If different, chown
+dbid="$(stat -c "%u" "${DB_FOLDER}/Library")"
+userid="$(getent passwd plex | cut -d: -f3)"
+if [ "${dbid}" != "${userid}" ]; then
+    echo "Changing to proper owner.  This could take a few minutes."
+    chown -R plex:nogroup "${PLEX_HOME}"
+fi
 
 if [ ! -d "${PLEX_CODECS}" ]; then
+    echo "Updating codecs directory."
     killall -u plex || :
     mkdir -p "${PLEX_CODECS}"
     chown -R plex:nogroup "${PLEX_CODECS}"
@@ -143,11 +148,15 @@ if [ ! -d "${PLEX_CODECS}" ]; then
     cp -rfp "${CODECS}" "${PLEX_CODECS}"
     rm -rf "${CODECS}"
     ln -s "${PLEX_CODECS}/Codecs" "${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
-    systemctl start ${SERVICE}.service >/dev/null || true
 fi
 
 # created for plex uninstall because it fails if it can't remove this directory.
 if [ ! -d "/var/lib/plexmediaserver" ]; then
     mkdir -p /var/lib/plexmediaserver
     chmod 755 /var/lib/plexmediaserver
+fi
+
+createoverride
+if ! $(systemctl -q is-active "${SERVICE}") ; then
+    systemctl start ${SERVICE}.service >/dev/null || true
 fi
