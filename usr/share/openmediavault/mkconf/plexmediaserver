@@ -120,16 +120,15 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     systemctl stop ${SERVICE}.service >/dev/null || true
     killall -u plex || :
 
-    if [ ! -d "${DB_FOLDER}/Library" ]; then
-        cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
-        if [ -d "${PLEX_HOME}" ]; then
-            rm -rf "${PLEX_HOME}"
-        fi
-        createoverride
-        usermod -d "${DB_FOLDER}" plex
-        PLEX_HOME="${DB_FOLDER}"
-        CODECS="${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
+    # always copy - if the directory exists somehow, nothing gets updated
+    cp -rfp "${PLEX_HOME}" "${DB_FOLDER}"
+    if [ -d "${PLEX_HOME}" ]; then
+        rm -rf "${PLEX_HOME}"
     fi
+    createoverride
+    usermod -d "${DB_FOLDER}" plex
+    PLEX_HOME="${DB_FOLDER}"
+    CODECS="${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
 else
     createoverride
 fi
