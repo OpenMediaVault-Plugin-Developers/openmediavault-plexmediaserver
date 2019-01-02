@@ -112,19 +112,6 @@ EOF
     systemctl daemon-reload
 }
 
-chown -R plex:nogroup "${PLEX_HOME}"
-
-if [ ! -d "${PLEX_CODECS}" ]; then
-    killall -u plex || :
-    mkdir -p "${PLEX_CODECS}"
-    chown -R plex:nogroup "${PLEX_CODECS}"
-    chmod 755 "${PLEX_CODECS}"
-    cp -rfp "${CODECS}" "${PLEX_CODECS}"
-    rm -rf "${CODECS}"
-    ln -s "${PLEX_CODECS}/Codecs" "${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
-    systemctl start ${SERVICE}.service >/dev/null || true
-fi
-
 if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
     if ! omv_is_mounted "${DB_MNTENTDIR}" ; then
         exit 1
@@ -140,19 +127,24 @@ if [ "${PLEX_HOME}" != "${DB_FOLDER}" ]; then
         fi
         createoverride
         usermod -d "${DB_FOLDER}" plex
+        PLEX_HOME="${DB_FOLDER}"
+        CODECS="${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
     fi
-
-    # Check current database uid.  If different, chown
-    dbid="$(stat -c "%u" "${DB_FOLDER}/Library")"
-    userid="$(getent passwd plex | cut -d: -f3)"
-    if [ "${dbid}" != "${userid}" ]; then
-        echo "Changing to proper owner.  This could take a few minutes."
-        chown -R plex:nogroup "${DB_FOLDER}"
-    fi
-
-    systemctl start ${SERVICE}.service >/dev/null || true
 else
     createoverride
+fi
+
+chown -R plex:nogroup "${PLEX_HOME}"
+
+if [ ! -d "${PLEX_CODECS}" ]; then
+    killall -u plex || :
+    mkdir -p "${PLEX_CODECS}"
+    chown -R plex:nogroup "${PLEX_CODECS}"
+    chmod 755 "${PLEX_CODECS}"
+    cp -rfp "${CODECS}" "${PLEX_CODECS}"
+    rm -rf "${CODECS}"
+    ln -s "${PLEX_CODECS}/Codecs" "${PLEX_HOME}/Library/Application Support/Plex Media Server/Codecs"
+    systemctl start ${SERVICE}.service >/dev/null || true
 fi
 
 # created for plex uninstall because it fails if it can't remove this directory.
