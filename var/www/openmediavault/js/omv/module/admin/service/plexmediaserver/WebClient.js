@@ -37,25 +37,24 @@ Ext.define("OMV.module.admin.service.plexmediaserver.WebClient", {
 
                 var enable = response.enable;
                 var showtab = response.showtab;
-                var webClientPanel = parent.down('panel[title=' + _("Web Client") + ']');
+
+        		var webClientPanel = parent.down('panel[title=' + _("Web Client") + ']');
 
                 if (webClientPanel) {
-                    if (enable) {
-                        webClientPanel.enable();
-                    } else {
-                        webClientPanel.disable();
-                        panel = parent.down('panel[title=' + _("Settings") + ']');
-                        if (panel) {
-                            parent.setActiveTab(panel);
-                        }
-                    }
-                    if (showtab) {
-                        webClientPanel.tab.show();
-                    } else {
-                        webClientPanel.tab.hide();
-                    }
-                }
-            },
+		            if (showtab) {
+			            webClientPanel.enable();
+		                webClientPanel.tab.show();
+		            } else {
+			            webClientPanel.disable();
+		                webClientPanel.tab.hide();
+		            }
+		        }
+
+                panel = parent.down('panel[title=' + _("Settings") + ']');
+                if (panel) {
+                    parent.setActiveTab(panel);
+                }    
+	        },
             relayErrors : false,
             rpcData     : {
                 service  : "PlexMediaServer",
